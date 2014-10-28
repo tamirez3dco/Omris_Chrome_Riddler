@@ -53,16 +53,23 @@ namespace RiddleApp
         {
             riddleRichTextBox.Text = chosenWord.getUnicodeWord();
             riddleImage.Image = new Bitmap(Processer.mainResourcesPath + @"words_sounds\" + chosenWord.filename + ".jpg");
-            havara_players = new List<SoundPlayer>();
-            for (int i = 0; i < chosenWord.havaras.Count; i++)
-            {
-                SoundPlayer nextHavaraPlayer = new SoundPlayer(Processer.mainResourcesPath + @"words_sounds\" + chosenWord.filename + "_" + i.ToString() + ".wav");
-                nextHavaraPlayer.Load();
-                havara_players.Add(nextHavaraPlayer);
-            }
             word_player = new SoundPlayer(Processer.mainResourcesPath + @"words_sounds\" + chosenWord.filename + ".wav");
             word_player.Load();
-            PlayHavara();
+            havara_players = new List<SoundPlayer>();
+            if (chosenWord.havaras.Count > 1)
+            {
+                for (int i = 0; i < chosenWord.havaras.Count; i++)
+                {
+                    SoundPlayer nextHavaraPlayer = new SoundPlayer(Processer.mainResourcesPath + @"words_sounds\" + chosenWord.filename + "_" + i.ToString() + ".wav");
+                    nextHavaraPlayer.Load();
+                    havara_players.Add(nextHavaraPlayer);
+                }
+                PlayHavara();
+            }
+            else
+            {
+                word_player.Play();
+            }
         }
 
         private void answerRichTextBox_TextChanged(object sender, EventArgs e)

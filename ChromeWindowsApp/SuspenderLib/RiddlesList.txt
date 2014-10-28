@@ -1,4 +1,12 @@
 ﻿[
+{"filename":"hitul","english_chars":"JH<UK","havaras":[[0,1],[2,4]],"riddle_type":2},
+{"filename":"hitul","english_chars":"JH<UK","havaras":[[0,1],[2,4]],"riddle_type":1},
+{"filename":"naal","english_chars":"BGK","havaras":[[0,0],[1,2]],"riddle_type":2},
+{"filename":"naal","english_chars":"BGK","havaras":[[0,0],[1,2]],"riddle_type":1},
+{"filename":"tik","english_chars":"<HE","havaras":[[0,2]],"riddle_type":2},
+{"filename":"tik","english_chars":"<HE","havaras":[[0,2]],"riddle_type":1},
+{"filename":"madregot","english_chars":"NSRDU<","havaras":[[0,1],[2,2],[3,5]],"riddle_type":1},
+{"filename":"madregot","english_chars":"NSRDU<","havaras":[[0,1],[2,2],[3,5]],"riddle_type":2},
 {"filename":"sigarya","english_chars":"XHDRHV","havaras":[[0,1],[2,3],[4,5]],"riddle_type":1},
 {"filename":"sigarya","english_chars":"XHDRHV","havaras":[[0,1],[2,3],[4,5]],"riddle_type":2},
 {"filename":"zipor","english_chars":"MHPUR","havaras":[[0,1],[2,4]],"riddle_type":1},

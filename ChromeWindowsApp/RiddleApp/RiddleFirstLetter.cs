@@ -64,9 +64,9 @@ namespace RiddleApp
 
             reject_key_pressing = true;
             HebrewLetter.hebrewLettersDict[e.KeyValue].sound.Play();
-            
-            
-            answerWasCorrect =  (e.KeyCode.ToString()[0] == chosenWord.english_chars[0]);
+
+
+            answerWasCorrect = (HebrewLetter.hebrewLettersDict[e.KeyValue].english_char[0] == chosenWord.english_chars[0]);
             if (answerWasCorrect)
             {
                 answerRichTextBox.SelectAll();
