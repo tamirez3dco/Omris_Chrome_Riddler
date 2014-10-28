@@ -121,10 +121,6 @@ namespace RiddleApp
             answerRichTextBox.SelectionBackColor = Color.Red;
         }
 
-        private void RiddleFirstLetter_MouseClick(object sender, MouseEventArgs e)
-        {
-            word_player.Play();
-        }
 
         private void riddleImage_MouseClick(object sender, MouseEventArgs e)
         {

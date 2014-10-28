@@ -47,7 +47,7 @@ namespace SuspenderLib
             int chosenIndex = rnd.Next(0, wordsInGame.Count);
             if (chosenIndex == wordsInGame.Count) chosenIndex--;
 
-            if (debug) chosenIndex = 1;
+            if (debug) chosenIndex = 0;
 
             return wordsInGame[chosenIndex];
         }

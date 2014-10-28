@@ -63,19 +63,6 @@ namespace RiddleApp
             word_player = new SoundPlayer(Processer.mainResourcesPath + @"words_sounds\" + chosenWord.filename + ".wav");
             word_player.Load();
             PlayHavara();
-
-
-                /*
-                    StringBuilder sb = new StringBuilder(chosenWord.getUnicodeWord());
-                    sb[0] = '_';
-                    answerRichTextBox.Text = sb.ToString();
-                    answerRichTextBox.Select(0, 1);
-                    riddleRichTextBox.Visible = false;
-                    riddleImage.Image = new Bitmap(mainResourcesPath + @"words_sounds\" + chosenWord.filename + ".jpg");
-                    word_player = new SoundPlayer(mainResourcesPath + @"words_sounds\" + chosenWord.filename + ".wav");
-                    word_player.Load();
-                    word_player.Play();
-*/
         }
 
         private void answerRichTextBox_TextChanged(object sender, EventArgs e)
@@ -112,11 +99,8 @@ namespace RiddleApp
             }
             else
             {
-                fuckups++;
-                //if (fuckups < 3)
-                //{
+                //fuckups++;  // meantime useless
                 buzzer_player.Play();
-                //}
             }
 
         }
@@ -155,33 +139,13 @@ namespace RiddleApp
             HebrewLetter.hebrewLettersDict[e.KeyValue].sound.Play();
 
 
-            answerWasCorrect = (e.KeyCode.ToString()[0] == chosenWord.english_chars[answerRichTextBox.Text.Length]);
+            answerWasCorrect = (HebrewLetter.hebrewLettersDict[e.KeyValue].english_char[0] == chosenWord.english_chars[answerRichTextBox.Text.Length]);
             if (answerWasCorrect)
             {
                 answerRichTextBox.Text = riddleRichTextBox.Text.Substring(0, answerRichTextBox.Text.Length + 1);
             }
             letterStoppedTimer.Interval = HebrewLetter.hebrewLettersDict[e.KeyValue].duration;
             letterStoppedTimer.Start();
-
-            /*
-            e.Handled = true;
-
-            Debug.WriteLine("RiddleWordFirst_KeyDown" + e.KeyCode.ToString());
-            if (e.KeyCode.ToString()[0] == chosenWord.english_chars[answerRichTextBox.Text.Length])
-            {
-                gling_player.Play();
-                answerRichTextBox.Text = riddleRichTextBox.Text.Substring(0, answerRichTextBox.Text.Length + 1);
-                if (answerRichTextBox.Text == riddleRichTextBox.Text)
-                {
-                    play_kolkavod_and_set_close_timers();
-                }
-            }
-            else
-            {
-                buzzer_player.Play();
-            }
-             * 
-             */
             return;
 
         }
@@ -189,6 +153,16 @@ namespace RiddleApp
         private void RiddleWordFirst_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void riddleRichTextBox_Click(object sender, EventArgs e)
+        {
+            word_player.Play();
+        }
+
+        private void answerRichTextBox_Click(object sender, EventArgs e)
+        {
+            word_player.Play();
         }
 
 

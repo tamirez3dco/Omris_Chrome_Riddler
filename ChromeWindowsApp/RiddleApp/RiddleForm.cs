@@ -106,6 +106,15 @@ namespace RiddleApp
 
         }
 
+        private void RiddleForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            word_player.Play();
+        }
+
+        private void riddleImage_Click(object sender, EventArgs e)
+        {
+            word_player.Play();
+        }
 
     }
 }

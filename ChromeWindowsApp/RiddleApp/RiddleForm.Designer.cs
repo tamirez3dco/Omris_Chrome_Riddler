@@ -43,6 +43,7 @@
             this.riddleImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.riddleImage.TabIndex = 2;
             this.riddleImage.TabStop = false;
+            this.riddleImage.Click += new System.EventHandler(this.riddleImage_Click);
             // 
             // kol_kavod_Timer
             // 
@@ -64,6 +65,7 @@
             this.Name = "RiddleForm";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RiddleForm_KeyDown);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RiddleForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.riddleImage)).EndInit();
             this.ResumeLayout(false);
 

@@ -45,6 +45,7 @@
             this.riddleRichTextBox.Size = new System.Drawing.Size(426, 141);
             this.riddleRichTextBox.TabIndex = 3;
             this.riddleRichTextBox.Text = "abc";
+            this.riddleRichTextBox.Click += new System.EventHandler(this.riddleRichTextBox_Click);
             // 
             // answerRichTextBox
             // 
@@ -56,6 +57,7 @@
             this.answerRichTextBox.TabIndex = 4;
             this.answerRichTextBox.Text = "";
             this.answerRichTextBox.SelectionChanged += new System.EventHandler(this.answerRichTextBox_SelectionChanged);
+            this.answerRichTextBox.Click += new System.EventHandler(this.answerRichTextBox_Click);
             this.answerRichTextBox.TextChanged += new System.EventHandler(this.answerRichTextBox_TextChanged);
             // 
             // soundStopperTimer
@@ -69,7 +71,6 @@
             this.ClientSize = new System.Drawing.Size(1103, 356);
             this.Controls.Add(this.answerRichTextBox);
             this.Controls.Add(this.riddleRichTextBox);
-            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "RiddleWordFirst";
             this.Text = "RiddleWordFirst";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RiddleWordFirst_KeyDown);
