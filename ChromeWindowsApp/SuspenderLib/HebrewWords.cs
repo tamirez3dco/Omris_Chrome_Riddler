@@ -35,7 +35,7 @@ namespace SuspenderLib
        public static void initGameWords()
         {
             HebrewLetters.initCapLetterToUnicode();
-            //String path = @"C:\Users\tamirlev\Documents\Visual Studio 2010\Projects\ChromeWindowsApp\SuspenderLib\RiddlesList.txt";
+            //String path = @"SuspenderLib\RiddlesList.txt";
             String content = File.ReadAllText(Processer.listPath);
             JavaScriptSerializer serlizer = new JavaScriptSerializer();
             wordsInGame = serlizer.Deserialize<List<HebrewWord>>(content);

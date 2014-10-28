@@ -37,8 +37,6 @@ namespace RiddleApp
         }
 
 
-//        public static String mainResourcesPath = @"C:\Users\tamirlev\Documents\Visual Studio 2010\Projects\ChromeWindowsApp\SoundsImagesVideos\";
-
         public HebrewWord chosenWord;
         public void extraInitializations()
         {

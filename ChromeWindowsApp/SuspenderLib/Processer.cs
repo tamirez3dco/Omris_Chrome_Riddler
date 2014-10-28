@@ -13,8 +13,8 @@ namespace SuspenderLib
     {
         public static String riddleAppExecutablePath;
         public static String mainParentFolderPath;
-        public static String mainResourcesPath;// = @"C:\Users\tamirlev\Documents\Visual Studio 2010\Projects\ChromeWindowsApp\SoundsImagesVideos\";
-        public static String mainPsSuspendPath;// = @"C:\Users\tamirlev\Documents\Visual Studio 2010\Projects\ChromeWindowsApp\Pssuspend\";
+        public static String mainResourcesPath;// = @"SoundsImagesVideos\";
+        public static String mainPsSuspendPath;// = @"fPssuspend\";
         public static String listPath;
         public static String lettersPath;
 
