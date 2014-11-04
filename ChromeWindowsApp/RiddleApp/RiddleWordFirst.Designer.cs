@@ -73,8 +73,6 @@
             this.Controls.Add(this.riddleRichTextBox);
             this.Name = "RiddleWordFirst";
             this.Text = "RiddleWordFirst";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RiddleWordFirst_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RiddleWordFirst_KeyPress);
             this.Controls.SetChildIndex(this.riddleImage, 0);
             this.Controls.SetChildIndex(this.riddleRichTextBox, 0);
             this.Controls.SetChildIndex(this.answerRichTextBox, 0);

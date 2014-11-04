@@ -47,6 +47,7 @@
     <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrowserDetector.cs" />
     <Compile Include="HebrewLetter.cs" />
     <Compile Include="HebrewLetters.cs" />
     <Compile Include="HebrewWords.cs" />

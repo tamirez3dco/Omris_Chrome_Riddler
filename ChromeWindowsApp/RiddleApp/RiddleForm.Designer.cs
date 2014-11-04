@@ -65,6 +65,7 @@
             this.Name = "RiddleForm";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RiddleForm_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RiddleForm_KeyPress);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RiddleForm_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.riddleImage)).EndInit();
             this.ResumeLayout(false);

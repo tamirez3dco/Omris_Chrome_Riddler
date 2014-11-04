@@ -127,41 +127,19 @@ namespace RiddleApp
         }
 
 
-
-        private void RiddleWordFirst_KeyDown(object sender, KeyEventArgs e)
+        public override void changeAnswerText()
         {
-
-            e.Handled = true;
-            if (reject_key_pressing) return;
-
-            // play letter
-            //char englishChar = HebrewLetter.hebrewLetters
-            Debug.WriteLine(e.KeyCode.ToString());
-            Debug.WriteLine(e.KeyValue.ToString());
-
-            Debug.WriteLine("------------------");
-            if (!HebrewLetter.hebrewLettersDict.ContainsKey(e.KeyValue)) return;
-
-            reject_key_pressing = true;
-            HebrewLetter.hebrewLettersDict[e.KeyValue].sound.Play();
-
-
-            answerWasCorrect = (HebrewLetter.hebrewLettersDict[e.KeyValue].english_char[0] == chosenWord.english_chars[answerRichTextBox.Text.Length]);
             if (answerWasCorrect)
             {
                 answerRichTextBox.Text = riddleRichTextBox.Text.Substring(0, answerRichTextBox.Text.Length + 1);
             }
-            letterStoppedTimer.Interval = HebrewLetter.hebrewLettersDict[e.KeyValue].duration;
-            letterStoppedTimer.Start();
-            return;
-
         }
 
-        private void RiddleWordFirst_KeyPress(object sender, KeyPressEventArgs e)
+
+        public override bool keyPressWasCorrect(char eng_chr_pressed)
         {
-            e.Handled = true;
+            return (eng_chr_pressed == chosenWord.english_chars[answerRichTextBox.Text.Length]);
         }
-
         private void riddleRichTextBox_Click(object sender, EventArgs e)
         {
             word_player.Play();

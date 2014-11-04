@@ -57,10 +57,6 @@ namespace RiddleApp
 
 
 
-
-
-
-
         public void play_kolkavod_and_set_close_timers()
         {
             kolkavod_player.Play();
@@ -81,27 +77,65 @@ namespace RiddleApp
             this.Close();
         }
 
+        public virtual bool keyPressWasCorrect(char eng_chr_pressed)
+        {
+            return true;
+        }
+
+        private bool check_code(Keys k)
+        {
+            if ((k == Keys.F11) && (code_counter == 0))
+            {
+                code_counter++;
+                return false;
+            }
+            if ((k == Keys.F9) && (code_counter == 1))
+            {
+                code_counter++;
+                return false;
+            }
+            if ((k == Keys.F5) && (code_counter == 2))
+            {
+                Program.quit = true;
+                return true;
+            }
+            return false;
+        }
+
         int code_counter = 0;
         private void RiddleForm_KeyDown(object sender, KeyEventArgs e)
         {
-           // Debug.WriteLine("RiddleForm_KeyDown()");
+            Debug.WriteLine("RiddleForm_KeyDown(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString()+")");
+
             e.Handled = true;
-            if ((e.KeyCode == Keys.F11) && (code_counter == 0))
+            if (check_code(e.KeyCode))
             {
-                code_counter++;
-                return;
-            }
-            if ((e.KeyCode == Keys.F9) && (code_counter == 1))
-            {
-                code_counter++;
-                return;
-            }
-            if ((e.KeyCode == Keys.F5) && (code_counter == 2))
-            {
-                Program.quit = true;
                 this.Close();
+                return;
             }
 
+            if (reject_key_pressing) return;
+            if (!HebrewLetter.hebrewLettersDict.ContainsKey(e.KeyValue)) return;
+
+            reject_key_pressing = true;
+            HebrewLetter.hebrewLettersDict[e.KeyValue].sound.Play();
+
+            answerWasCorrect = keyPressWasCorrect(HebrewLetter.hebrewLettersDict[e.KeyValue].english_char[0]);
+
+            changeAnswerText();
+            //answerWasCorrect = (HebrewLetter.hebrewLettersDict[e.KeyValue].english_char[0] == chosenWord.english_chars[answerRichTextBox.Text.Length]);
+
+            letterStoppedTimer.Interval = HebrewLetter.hebrewLettersDict[e.KeyValue].duration;
+            letterStoppedTimer.Start();
+            return;
+
+
+
+        }
+
+        public virtual void changeAnswerText()
+        {
+            throw new NotImplementedException();
         }
 
         private void RiddleForm_MouseDown(object sender, MouseEventArgs e)
@@ -112,6 +146,11 @@ namespace RiddleApp
         private void riddleImage_Click(object sender, EventArgs e)
         {
             word_player.Play();
+        }
+
+        private void RiddleForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
 
     }

@@ -43,6 +43,9 @@ namespace RiddleApp
                     case 2:
                         rf = new RiddleFirstLetter();
                         break;
+                    case 3:
+                        rf = new RiddleLastLetter();
+                        break;
                 }
                 rf.extraInitializations();
                 rf.chosenWord = chosenWord;

@@ -28,8 +28,8 @@ namespace RiddleApp
             word_player.Play();
         }
 
-        int bleep_index = 0;
-        private void bleepTimer_Tick(object sender, EventArgs e)
+        public int bleep_index = 0;
+        public virtual void bleepTimer_Tick(object sender, EventArgs e)
         {
 //            Debug.WriteLine("changebleepTimer_Tick()");
             if (bleep_index == 0)
@@ -49,24 +49,13 @@ namespace RiddleApp
             return;
         }
 
-        private void RiddleFirstLetter_KeyDown(object sender, KeyEventArgs e)
+        public override bool keyPressWasCorrect(char eng_chr_pressed)
         {
-            e.Handled = true;
-            if (reject_key_pressing) return;
+            return (eng_chr_pressed == chosenWord.english_chars[0]);
+        }
 
-            // play letter
-            //char englishChar = HebrewLetter.hebrewLetters
-            Debug.WriteLine(e.KeyCode.ToString());
-            Debug.WriteLine(e.KeyValue.ToString());
-
-            Debug.WriteLine("------------------");
-            if (!HebrewLetter.hebrewLettersDict.ContainsKey(e.KeyValue)) return;
-
-            reject_key_pressing = true;
-            HebrewLetter.hebrewLettersDict[e.KeyValue].sound.Play();
-
-
-            answerWasCorrect = (HebrewLetter.hebrewLettersDict[e.KeyValue].english_char[0] == chosenWord.english_chars[0]);
+        public override void changeAnswerText()
+        {
             if (answerWasCorrect)
             {
                 answerRichTextBox.SelectAll();
@@ -78,8 +67,7 @@ namespace RiddleApp
                 answerRichTextBox.DeselectAll();
 
             }
-            letterStoppedTimer.Interval = HebrewLetter.hebrewLettersDict[e.KeyValue].duration;
-            letterStoppedTimer.Start();
+            
         }
 
         public override void virtual_letterStoppedTimer_Tick(object sender, EventArgs e)
@@ -101,11 +89,6 @@ namespace RiddleApp
                 //}
             }
 
-        }
-
-        private void RiddleFirstLetter_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
         }
 
         private void RiddleFirstLetter_Load(object sender, EventArgs e)

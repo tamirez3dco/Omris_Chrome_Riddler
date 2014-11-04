@@ -58,14 +58,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(1103, 356);
             this.Controls.Add(this.answerRichTextBox);
             this.Name = "RiddleFirstLetter";
             this.Text = "RiddleFirstLetter";
             this.Load += new System.EventHandler(this.RiddleFirstLetter_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RiddleFirstLetter_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RiddleFirstLetter_KeyPress);
-//            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RiddleFirstLetter_MouseClick);
             this.Controls.SetChildIndex(this.riddleImage, 0);
             this.Controls.SetChildIndex(this.answerRichTextBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.riddleImage)).EndInit();
@@ -75,8 +73,8 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox answerRichTextBox;
         private System.Windows.Forms.Timer bleepTimer;
+        public System.Windows.Forms.RichTextBox answerRichTextBox;
 
     }
 }
