@@ -35,6 +35,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.riddleImage)).BeginInit();
             this.SuspendLayout();
             // 
+            // letterStoppedTimer
+            // 
+            this.letterStoppedTimer.Tick += new System.EventHandler(this.letterStoppedTimer_Tick);
+            // 
             // riddleRichTextBox
             // 
             this.riddleRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 90F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
@@ -83,8 +87,8 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox riddleRichTextBox;
-        private System.Windows.Forms.RichTextBox answerRichTextBox;
         private System.Windows.Forms.Timer soundStopperTimer;
+        public System.Windows.Forms.RichTextBox riddleRichTextBox;
+        public System.Windows.Forms.RichTextBox answerRichTextBox;
     }
 }

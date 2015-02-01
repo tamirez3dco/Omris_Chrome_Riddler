@@ -47,6 +47,7 @@ namespace RiddleApp
             }
             soundStopperTimer.Interval = 1300;
             soundStopperTimer.Start();
+
         }
 
         public override void setup_riddle()
@@ -77,8 +78,8 @@ namespace RiddleApp
             return;
             String answerText = answerRichTextBox.Text;
             String compareToText = riddleRichTextBox.Text;
-            Debug.WriteLine("answerText=" + answerText);
-            Debug.WriteLine("compareToText=" + compareToText);
+            Logger.Log("answerText=" + answerText);
+            Logger.Log("compareToText=" + compareToText);
             if (!compareToText.StartsWith(answerText))
             {
                 // play buzzer + color new letter with red
@@ -148,6 +149,11 @@ namespace RiddleApp
         private void answerRichTextBox_Click(object sender, EventArgs e)
         {
             word_player.Play();
+        }
+
+        private void letterStoppedTimer_Tick(object sender, EventArgs e)
+        {
+
         }
 
 

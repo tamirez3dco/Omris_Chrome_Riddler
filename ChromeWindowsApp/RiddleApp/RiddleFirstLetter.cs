@@ -31,17 +31,17 @@ namespace RiddleApp
         public int bleep_index = 0;
         public virtual void bleepTimer_Tick(object sender, EventArgs e)
         {
-//            Debug.WriteLine("changebleepTimer_Tick()");
+//            Logger.Log("changebleepTimer_Tick()");
             if (bleep_index == 0)
             {
-                //Debug.WriteLine("Slecting(0,1)");
+                //Logger.Log("Slecting(0,1)");
                 answerRichTextBox.Select(0, 1);
                 answerRichTextBox.SelectionBackColor = Color.White;
                 answerRichTextBox.SelectionColor = Color.White;
             }
             else
             {
-                //Debug.WriteLine("Deslecting");
+                //Logger.Log("Deslecting");
                 answerRichTextBox.DeselectAll();
             }
 

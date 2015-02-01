@@ -11,7 +11,7 @@
 {value:72,english_char:"H",filename:"yud",unicode:"\u05D9",duration:1000},
 {value:76,english_char:"L",filename:"kaf_sofit",unicode:"\u05DA",duration:1500},
 {value:70,english_char:"F",filename:"kaf",unicode:"\u05DB",duration:1000},
-{value:75,english_char:"K",filename:"lamed",unicode:"\u05DC",duration:1000},
+{value:75,english_char:"K",filename:"lamed",unicode:"\u05DC",duration:1400},
 {value:79,english_char:"O",filename:"mem_sofit",unicode:"\u05DD",duration:1500},
 {value:78,english_char:"N",filename:"mem",unicode:"\u05DE",duration:1000},
 {value:73,english_char:"I",filename:"nun_sofit",unicode:"\u05DF",duration:1500},

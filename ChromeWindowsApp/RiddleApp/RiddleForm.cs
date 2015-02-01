@@ -105,7 +105,7 @@ namespace RiddleApp
         int code_counter = 0;
         private void RiddleForm_KeyDown(object sender, KeyEventArgs e)
         {
-            Debug.WriteLine("RiddleForm_KeyDown(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString()+")");
+            Logger.Log("RiddleForm_KeyDown(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString()+")");
 
             e.Handled = true;
             if (check_code(e.KeyCode))

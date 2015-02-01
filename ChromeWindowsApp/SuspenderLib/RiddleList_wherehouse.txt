@@ -1,0 +1,4 @@
+{"filename":"ima","english_chars":"TNT","havaras":[[0,0],[1,2]],"riddle_types":[1,2,3]},
+{"filename":"mika","english_chars":"NHEV","havaras":[[0,1],[2,3]],"riddle_types":[1,2,3]},
+{"filename":"omri","english_chars":"GUNRH","havaras":[[0,2],[3,4]],"riddle_types":[1,2,3]},
+{"filename":"aba","english_chars":"TCT","havaras":[[0,0],[1,2]],"riddle_types":[1,2,3]},

@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
         [STAThread]
         static void Main()
         {
-            List<String> urls = SuspenderLib.BrowserDetector.GetChromeUrls();
+            //List<String> urls = SuspenderLib.BrowserDetector.GetChromeUrls();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

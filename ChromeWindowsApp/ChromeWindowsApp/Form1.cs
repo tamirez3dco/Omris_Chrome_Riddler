@@ -25,12 +25,12 @@ namespace WindowsFormsApplication1
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Processer.SuspendChrome();
+            Processer.SuspendProcess("Chrome.exe");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Processer.SuspendChrome(true);
+            Processer.SuspendProcess("Chrome.exe",true);
         }
 
         System.Media.SoundPlayer my_player;
@@ -79,7 +79,7 @@ namespace WindowsFormsApplication1
             List<HebrewWord> words = serlizer.Deserialize<List<HebrewWord>>(content);
             Object[] o_arr = (Object[])o;
             Dictionary<String, Object> dicto = (Dictionary<String, Object>)(o_arr[0]);
-            Debug.WriteLine("wlla");
+            Logger.Log("wlla");
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -111,6 +111,16 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         {
             button8.PerformClick();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Processer.SuspendProcess("Chrome.exe");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            Processer.ResumeChromes();
         }
     }
 }

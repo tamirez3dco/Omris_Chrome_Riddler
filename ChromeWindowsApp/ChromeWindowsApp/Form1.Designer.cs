@@ -41,6 +41,8 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,11 +158,33 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(376, 74);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(111, 43);
+            this.button9.TabIndex = 10;
+            this.button9.Text = "Ssupend C#";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(515, 79);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(97, 37);
+            this.button10.TabIndex = 11;
+            this.button10.Text = "Resome C#";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 342);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button7);
@@ -196,6 +220,8 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
 
 
     }

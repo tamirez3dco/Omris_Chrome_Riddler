@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace SuspenderLib
 {
+    using RiddleType = Int32;
 
     public class HebrewWord
     {
@@ -30,7 +31,7 @@ namespace SuspenderLib
             this.havaras = havaras;
         }
 
-       public static List<HebrewWord> wordsInGame;
+       public static Dictionary<RiddleType,List<HebrewWord>> wordsInGame;
 
        public static void initGameWords()
         {
@@ -39,28 +40,19 @@ namespace SuspenderLib
             String content = File.ReadAllText(Processer.listPath);
             JavaScriptSerializer serlizer = new JavaScriptSerializer();
             List<HebrewWord> temp_wordsInGame = serlizer.Deserialize<List<HebrewWord>>(content);
-            wordsInGame = new List<HebrewWord>();
+            wordsInGame = new Dictionary<RiddleType,List<HebrewWord>>();
             foreach (HebrewWord word in temp_wordsInGame)
             {
                 foreach (int riddleType in word.riddle_types)
                 {
                     HebrewWord newWord = new HebrewWord(word.english_chars, word.filename, word.havaras);
                     newWord.riddle_type = riddleType;
-                    wordsInGame.Add(newWord);
+                    if (!wordsInGame.ContainsKey(riddleType)) wordsInGame[riddleType] = new List<HebrewWord>();
+                    wordsInGame[riddleType].Add(newWord);
                 }
             }
         }
 
-        public static HebrewWord getRandomHebrewWord(bool debug = false)
-        {
-            Random rnd = new Random((int)DateTime.Now.Ticks);
-            int chosenIndex = rnd.Next(0, wordsInGame.Count);
-            if (chosenIndex == wordsInGame.Count) chosenIndex--;
-
-            //if (debug) chosenIndex = 0;
-
-            return wordsInGame[chosenIndex];
-        }
 
         public String getUnicodeWord()
         {

@@ -6,11 +6,143 @@ using System.Diagnostics;
 using System.Windows.Automation;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace SuspenderLib
 {
     public class Processer
     {
+
+        [Flags]
+        public enum ThreadAccess : int
+        {
+            TERMINATE = (0x0001),
+            SUSPEND_RESUME = (0x0002),
+            GET_CONTEXT = (0x0008),
+            SET_CONTEXT = (0x0010),
+            SET_INFORMATION = (0x0020),
+            QUERY_INFORMATION = (0x0040),
+            SET_THREAD_TOKEN = (0x0080),
+            IMPERSONATE = (0x0100),
+            DIRECT_IMPERSONATION = (0x0200)
+        }
+
+        [DllImport("kernel32.dll")]
+        static extern IntPtr OpenThread(ThreadAccess dwDesiredAccess, bool bInheritHandle, uint dwThreadId);
+        [DllImport("kernel32.dll")]
+        static extern uint SuspendThread(IntPtr hThread);
+        [DllImport("kernel32.dll")]
+        static extern int ResumeThread(IntPtr hThread);
+
+        [DllImport("user32")]
+        private static extern
+        IntPtr SendMessage(
+                IntPtr handle,
+                int Msg,
+                IntPtr wParam,
+                IntPtr lParam
+         );
+
+        private const int WM_CLOSE = 0x0010;
+/*
+        public void CloseWindowByClassName(string className)
+        {
+            IntPtr handle = FindWindow(null, className);
+            if (handle != IntPtr.Zero)
+            {
+                SendMessage(handle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+            }
+        }
+*/
+        private static void CloseHandle(IntPtr handle)
+        {
+            if (handle != IntPtr.Zero)
+            {
+                SendMessage(handle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+            }
+        }
+
+ 
+
+
+        public static void ResumeChromes()
+        {
+            Process[] chromes = Process.GetProcessesByName("chrome");
+            foreach (Process p in chromes)
+            {
+
+                foreach (ProcessThread pT in p.Threads)
+                {
+                    IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+
+                    if (pOpenThread == IntPtr.Zero)
+                    {
+                        continue;
+                    }
+
+                    var suspendCount = 0;
+                    do
+                    {
+                        suspendCount = ResumeThread(pOpenThread);
+                    } while (suspendCount > 0);
+
+                    CloseHandle(pOpenThread);
+                }
+            }
+        }
+
+        private static void SuspendProcess(int pid)
+        {
+            var process = Process.GetProcessById(pid);
+
+            if (process.ProcessName == string.Empty)
+                return;
+
+            foreach (ProcessThread pT in process.Threads)
+            {
+                IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+
+                if (pOpenThread == IntPtr.Zero)
+                {
+                    continue;
+                }
+
+                SuspendThread(pOpenThread);
+
+                CloseHandle(pOpenThread);
+            }
+        }
+
+        public static void ResumeProcess(int pid)
+        {
+            var process = Process.GetProcessById(pid);
+
+            if (process.ProcessName == string.Empty)
+                return;
+
+            foreach (ProcessThread pT in process.Threads)
+            {
+                IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+
+                if (pOpenThread == IntPtr.Zero)
+                {
+                    continue;
+                }
+
+                var suspendCount = 0;
+                do
+                {
+                    suspendCount = ResumeThread(pOpenThread);
+                } while (suspendCount > 0);
+
+                CloseHandle(pOpenThread);
+            }
+        }
+        
+        
+        
+        
+        
         public static String riddleAppExecutablePath;
         public static String mainParentFolderPath;
         public static String mainResourcesPath;// = @"SoundsImagesVideos\";
@@ -61,7 +193,7 @@ namespace SuspenderLib
             }
             catch (Exception e)
             {
-                Debug.WriteLine("Exception on pid=" + process.Id + "  e=" + e.Message);
+                Logger.Log("Exception on pid=" + process.Id + "  e=" + e.Message);
                 return null;
             }
 
@@ -75,32 +207,32 @@ namespace SuspenderLib
             foreach (Process p in chromeProceses)
             {
                 String url = SuspenderLib.Processer.GetChromeUrl(p);
-                Debug.WriteLine("url=" + url);
+                Logger.Log("url=" + url);
             }
 
 
             return true;
         }
 
-        public static void SuspendChrome(bool resume=false)
+        public static void SuspendProcess(String processName, bool resume=false)
         {
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.WorkingDirectory = mainPsSuspendPath;
             psi.FileName = "pssuspend.exe";
             //psi.UseShellExecute = false;
-            if (resume) psi.Arguments = "-r Chrome.exe";
-            else psi.Arguments = "Chrome.exe";
+            if (resume) psi.Arguments = "-r " + processName;
+            else psi.Arguments = processName;
             Process.Start(psi);
         }
 
         public static void KillRiddleApp()
         {
-            Debug.WriteLine("KillRiddleApp()");
+            Logger.Log("KillRiddleApp()");
             SuspenderLib.Processer.setPathes();
             ProcessStartInfo psi = new ProcessStartInfo();
             psi.WorkingDirectory = mainPsSuspendPath;
-            psi.FileName = "pskill.exe";
-            psi.Arguments = "RiddleApp.exe";
+            psi.FileName = "taskkill";
+            psi.Arguments = "/F /IM RiddleApp.exe";
             Process.Start(psi);
         }
 
