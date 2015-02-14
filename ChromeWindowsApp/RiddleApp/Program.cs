@@ -19,8 +19,7 @@ namespace RiddleApp
         {
             try
             {
-                String tempPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                Logger.LoggerFileLocation = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                Logger.LoggerFileLocation = Processer.mainDataPath;
                 //Logger.Log("RiddleApp.Program.Main(args.Length=" + args.Length.ToString() + ")");
                 string appPath = Path.GetDirectoryName(Application.ExecutablePath);
                 SuspenderLib.Processer.setPathes();

@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiddleApp", "RiddleApp\Ridd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Killer", "Killer\Killer.csproj", "{E39452EA-7D1B-40E3-B0FF-F028A42FC308}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riddler2", "Riddler2\Riddler2.csproj", "{5E77D7CD-AD48-42E1-931A-2619EB4A10AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HAMENAJES", "Riddler2\HAMENAJES.csproj", "{5E77D7CD-AD48-42E1-931A-2619EB4A10AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

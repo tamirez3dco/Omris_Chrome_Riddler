@@ -75,7 +75,7 @@
             // 
             // kol_kavod_Timer
             // 
-            this.kol_kavod_Timer.Interval = 5000;
+            this.kol_kavod_Timer.Interval = 1500;
             this.kol_kavod_Timer.Tick += new System.EventHandler(this.kol_kavod_Timer_Tick);
             // 
             // soundStopperTimer

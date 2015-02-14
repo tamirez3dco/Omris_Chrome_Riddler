@@ -24,14 +24,16 @@ namespace SuspenderLib
         {
         }
 
-        public HebrewWord(String english_chars, String file_name, List<HAVARA> havaras)
+        public HebrewWord(String english_chars, String file_name, List<HAVARA> havaras, int type)
         {
             this.english_chars = english_chars;
             this.filename = file_name;
             this.havaras = havaras;
+            this.riddle_type = type;
         }
 
        public static Dictionary<RiddleType,List<HebrewWord>> wordsInGame;
+       public static List<HebrewWord> wordsDB;
 
        public static void initGameWords()
         {
@@ -39,14 +41,13 @@ namespace SuspenderLib
             //String path = @"SuspenderLib\RiddlesList.txt";
             String content = File.ReadAllText(Processer.listPath);
             JavaScriptSerializer serlizer = new JavaScriptSerializer();
-            List<HebrewWord> temp_wordsInGame = serlizer.Deserialize<List<HebrewWord>>(content);
+            wordsDB = serlizer.Deserialize<List<HebrewWord>>(content);
             wordsInGame = new Dictionary<RiddleType,List<HebrewWord>>();
-            foreach (HebrewWord word in temp_wordsInGame)
+            foreach (HebrewWord word in wordsDB)
             {
                 foreach (int riddleType in word.riddle_types)
                 {
-                    HebrewWord newWord = new HebrewWord(word.english_chars, word.filename, word.havaras);
-                    newWord.riddle_type = riddleType;
+                    HebrewWord newWord = new HebrewWord(word.english_chars, word.filename, word.havaras,riddleType);
                     if (!wordsInGame.ContainsKey(riddleType)) wordsInGame[riddleType] = new List<HebrewWord>();
                     wordsInGame[riddleType].Add(newWord);
                 }

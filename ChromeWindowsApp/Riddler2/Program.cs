@@ -5,23 +5,33 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Riddler2
+namespace HAMENAJES
 {
+    
     static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(String[] args)
         {
-            Processer.setPathes();
-            HebrewWord.initGameWords();
-            HebrewLetter.initHebrewLetters();
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            try
+            {
+                Processer.setPathes();
+                HebrewWord.initGameWords();
+                HebrewLetter.initHebrewLetters();
+                EnglishLetter.init_english_sounds();
+                
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Form1.DEBUGME = (args.Contains("DEBUGME"));
+                Application.Run(new Form1());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }

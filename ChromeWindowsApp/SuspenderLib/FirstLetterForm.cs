@@ -39,6 +39,8 @@ namespace SuspenderLib
                 next_correct_key = riddleWord.english_chars[0];
                 delay_first_sound_timer.Start();
                 bleepTimer.Start();
+                make_sure_window_on_top();
+
             }
             catch (Exception exc)
             {

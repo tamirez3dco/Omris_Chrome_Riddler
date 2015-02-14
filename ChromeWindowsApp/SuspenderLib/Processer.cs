@@ -7,6 +7,7 @@ using System.Windows.Automation;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
+using NAudio.Wave;
 
 namespace SuspenderLib
 {
@@ -149,6 +150,7 @@ namespace SuspenderLib
         public static String mainPsSuspendPath;// = @"fPssuspend\";
         public static String listPath;
         public static String lettersPath;
+        public static String mainDataPath;
 
         public static void setPathes()
         {
@@ -156,11 +158,11 @@ namespace SuspenderLib
             DirectoryInfo riddleAppExecutableDirectoryInfo = new DirectoryInfo(riddleAppExecutablePath);
 
             mainParentFolderPath = riddleAppExecutableDirectoryInfo.Parent.Parent.Parent.FullName;
-            mainResourcesPath = mainParentFolderPath + Path.DirectorySeparatorChar + "SoundsImagesVideos" + Path.DirectorySeparatorChar;
             mainPsSuspendPath = mainParentFolderPath + Path.DirectorySeparatorChar + "Pssuspend" + Path.DirectorySeparatorChar;
             listPath = mainParentFolderPath + Path.DirectorySeparatorChar + "SuspenderLib" + Path.DirectorySeparatorChar + "RiddlesList.txt";
             lettersPath = mainParentFolderPath + Path.DirectorySeparatorChar + "SuspenderLib" + Path.DirectorySeparatorChar + "LettersList.txt";
-
+            mainDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + Path.DirectorySeparatorChar + "Omrikusher";
+            mainResourcesPath = mainDataPath + Path.DirectorySeparatorChar + "SoundsImagesVideos" + Path.DirectorySeparatorChar;
         }
 
 
@@ -217,9 +219,11 @@ namespace SuspenderLib
         public static void SuspendProcess(String processName, bool resume=false)
         {
             ProcessStartInfo psi = new ProcessStartInfo();
+            psi.UseShellExecute = false;
+            psi.CreateNoWindow = true;
+
             psi.WorkingDirectory = mainPsSuspendPath;
-            psi.FileName = "pssuspend.exe";
-            //psi.UseShellExecute = false;
+            psi.FileName = psi.WorkingDirectory + Path.DirectorySeparatorChar + "pssuspend.exe";
             if (resume) psi.Arguments = "-r " + processName;
             else psi.Arguments = processName;
             Process.Start(psi);
@@ -237,5 +241,47 @@ namespace SuspenderLib
         }
 
 
+    }
+
+    public static class WavFileUtils
+    {
+        public static void TrimWavFile(string inPath, string outPath, TimeSpan cutFromStart, TimeSpan cutFromEnd)
+        {
+            using (WaveFileReader reader = new WaveFileReader(inPath))
+            {
+                using (WaveFileWriter writer = new WaveFileWriter(outPath, reader.WaveFormat))
+                {
+                    int bytesPerMillisecond = reader.WaveFormat.AverageBytesPerSecond / 1000;
+
+                    int startPos = (int)cutFromStart.TotalMilliseconds * bytesPerMillisecond;
+                    startPos = startPos - startPos % reader.WaveFormat.BlockAlign;
+
+                    int endBytes = (int)cutFromEnd.TotalMilliseconds * bytesPerMillisecond;
+                    endBytes = endBytes - endBytes % reader.WaveFormat.BlockAlign;
+                    int endPos = (int)reader.Length - endBytes;
+
+                    TrimWavFile(reader, writer, startPos, endPos);
+                }
+            }
+        }
+
+        private static void TrimWavFile(WaveFileReader reader, WaveFileWriter writer, int startPos, int endPos)
+        {
+            reader.Position = startPos;
+            byte[] buffer = new byte[1024];
+            while (reader.Position < endPos)
+            {
+                int bytesRequired = (int)(endPos - reader.Position);
+                if (bytesRequired > 0)
+                {
+                    int bytesToRead = Math.Min(bytesRequired, buffer.Length);
+                    int bytesRead = reader.Read(buffer, 0, bytesToRead);
+                    if (bytesRead > 0)
+                    {
+                        writer.WriteData(buffer, 0, bytesRead);
+                    }
+                }
+            }
+        }
     }
 }

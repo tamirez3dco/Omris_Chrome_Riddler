@@ -34,6 +34,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NAudio">
+      <HintPath>..\..\..\Ndaudio\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>.\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -58,6 +61,13 @@
       <DependentUpon>BasicRddleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BrowserDetector.cs" />
+    <Compile Include="EnglishLetters.cs" />
+    <Compile Include="EnglishSingleLetterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EnglishSingleLetterForm.Designer.cs">
+      <DependentUpon>EnglishSingleLetterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FirstLetterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +92,12 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Processer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UploaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UploaderForm.Designer.cs">
+      <DependentUpon>UploaderForm.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="LettersList.txt" />
@@ -99,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LastLetterForm.resx">
       <DependentUpon>LastLetterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UploaderForm.resx">
+      <DependentUpon>UploaderForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

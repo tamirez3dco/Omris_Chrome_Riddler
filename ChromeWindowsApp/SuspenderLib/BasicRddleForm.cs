@@ -29,7 +29,7 @@ namespace SuspenderLib
         public bool play_havaras_when_shown = false;
         public List<System.Media.SoundPlayer> havara_players;
         int havara_counter = 0;
-
+        public bool riddleAboutToClose = false;
 
         public HorizontalAlignment desired_alignment = HorizontalAlignment.Center;
 
@@ -64,7 +64,7 @@ namespace SuspenderLib
         public virtual void load_riddle_sounds_into_dict()
         {
             String temp = "words_sounds";
-            if (this.GetType() == typeof(BasicRddleForm)) temp = "letters_sounds";
+            if (this.GetType() == typeof(BasicRddleForm) || this.GetType() == typeof(EnglishSingleLetterForm)) temp = "letters_sounds";
             String word_sound_path = Processer.mainResourcesPath + temp + Path.DirectorySeparatorChar + riddleWord.filename + ".wav";
             word_player = new System.Media.SoundPlayer(word_sound_path);
             word_player.Load();
@@ -121,6 +121,8 @@ namespace SuspenderLib
 
                 next_correct_key = riddleWord.english_chars[0];
                 delay_first_sound_timer.Start();
+
+                make_sure_window_on_top();
             }
             catch (Exception exc)
             {
@@ -134,7 +136,15 @@ namespace SuspenderLib
 
         }
 
-        private void delay_first_sound_timer_Tick(object sender, EventArgs e)
+
+        public void make_sure_window_on_top()
+        {
+            this.WindowState = FormWindowState.Minimized;
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+            answer_richTextBox.Focus();
+        }
+        public virtual void delay_first_sound_timer_Tick(object sender, EventArgs e)
         {
             delay_first_sound_timer.Stop();
             if (play_havaras_when_shown) PlayHavara();
@@ -144,8 +154,9 @@ namespace SuspenderLib
 
         public virtual bool check_keystroke(KeyEventArgs e)
         {
-            Logger.Log("SuspenderLib.check_keystroke(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString() + ")");
+            Logger.Log("SuspenderLib.BasicRiddleForm.check_keystroke(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString() + ")");
 
+            if (riddleAboutToClose) return false;
             if (reject_key_pressing) return false;
             if (!HebrewLetter.hebrewLettersDict.ContainsKey(e.KeyValue)) return false;
 
@@ -163,12 +174,7 @@ namespace SuspenderLib
 
         private void BasicRiddleForm_KeyDown(object sender, KeyEventArgs e)
         {
-            Logger.Log("SuspenderLib.BasicRiddleForm_KeyDown(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString() + ")");
-
-            e.Handled = true;
-
-            if (reject_key_pressing) return;
-            check_keystroke(e);
+            answer_richTextBox_KeyDown(sender, e);
             return;
         }
 
@@ -182,6 +188,8 @@ namespace SuspenderLib
 
         public void play_kolkavod_and_set_close_timers()
         {
+            riddleAboutToClose = true;
+
             kolkavod_player.Play();
             kol_kavod_Timer.Start();
         }
@@ -190,6 +198,7 @@ namespace SuspenderLib
         {
             // check if answer was correct
             letterStoppedTimer.Stop();
+            if (riddleAboutToClose) return;
             reject_key_pressing = false;
             if (answerWasCorrect)
             {
@@ -230,7 +239,8 @@ namespace SuspenderLib
 
         private void BasicRiddlerForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            answer_richTextBox_KeyPress(sender, e);
+            return;
         }
 
         private void BasicRiddleForm_MouseDown(object sender, MouseEventArgs e)
@@ -255,8 +265,10 @@ namespace SuspenderLib
             e.Handled = true;
         }
 
-        private void display_richTextBox_KeyDown(object sender, KeyEventArgs e)
+        public virtual void display_richTextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            answer_richTextBox_KeyDown(sender, e);
+            return;
             Logger.Log("SuspenderLib.display_richTextBox_KeyDown(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString() + ")");
 
             e.Handled = true;
@@ -267,7 +279,7 @@ namespace SuspenderLib
 
         }
 
-        private void display_richTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        public virtual void display_richTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }
@@ -278,6 +290,7 @@ namespace SuspenderLib
             havara_counter++;
             PlayHavara();
         }
+
 
     }
 }
