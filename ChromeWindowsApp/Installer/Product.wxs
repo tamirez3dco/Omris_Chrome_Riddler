@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Installer" Language="1033" Version="1.0.0.0" Manufacturer="Microsoft" UpgradeCode="334d47b8-d6a4-4bb0-82c8-7f6b6ab34e4e">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+    <Feature Id="ProductFeature" Title="Installer" Level="1">
+      <ComponentGroupRef Id="HAMENAJESET.Binaries" />
+      <ComponentRef Id="comp_6078DF18_DAA3_4CCE_8FEF_7C0874BFD961" />
+      <ComponentRef Id="comp_9646176E_E2BB_42AF_A78A_ADDE71A03377" />
+      <ComponentRef Id="comp_8D28BCF7_84F9_43FF_A05C_BBD92EAD764F" />
+      <ComponentRef Id="comp_3C7BB5AD_19CC_4AF7_96F4_D2FB693E27C4" />
+      <ComponentRef Id="comp_B71B049F_8276_4FEE_BE51_7612E9E7424E" />
+      <ComponentRef Id="comp_D45BFAC1_7B35_4A44_9D83_65B4F8D0885D" />
+      <ComponentRef Id="comp_2AE85AE1_4D6B_4FED_B403_21279C0F0F5F" />
+      <ComponentRef Id="comp_C16E60B9_DA69_42AB_8709_1D8F26BBF56F" />
+      <ComponentRef Id="comp_D9419E93_8652_47EC_9F1F_117E8604BCCB" />
+      <ComponentRef Id="comp_letters_sounds_files" />
+      <ComponentRef Id="comp_words_files" />
+    </Feature>
+  </Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="dir_66689966_16F5_478D_A55D_4E7C9BE429E7" Name="HAMENAJESET">
+          <Component Id="comp_6078DF18_DAA3_4CCE_8FEF_7C0874BFD961" Guid="860AA2EF-C125-4893-8C58-438B051E1139" Permanent="no" SharedDllRefCount="no" Transitive="no">
+            <File Id="_FA71078C_B927_40E9_9BE8_B18028F30CB4" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="NAudio.dll" Source="..\packages\NAudio.1.7.2\lib\net35\NAudio.dll" KeyPath="yes" />
+            <File Id="_E3E43EBC_CD6F_42BF_81CB_E46077E3340E" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="SuspenderLib.dll" Source="..\SuspenderLib\bin\Debug\SuspenderLib.dll" />
+            <File Id="_66187A1B_D2DE_41B2_B7CA_EE4EE527D228" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="System.Data.SqlServerCe.dll" Source="..\..\..\..\Program Files (x86)\Microsoft SQL Server Compact Edition\v4.0\Desktop\System.Data.SqlServerCe.dll" />
+          </Component>
+          <Component Id="comp_9646176E_E2BB_42AF_A78A_ADDE71A03377" Guid="E0005EFF-C0D7-4E3C-89E8-5D687BF03CA7" Permanent="no" SharedDllRefCount="no" Transitive="no">
+            <File Id="_B5A94424_826F_476F_B5A4_A2557EE50A6B" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="pssuspend.exe" Source="..\Riddler2\bin\Debug\pssuspend.exe" KeyPath="yes" />
+          </Component>
+          <Directory Id="HAMENAJESET.Binaries" />
+        </Directory>
+      </Directory>
+      <Directory Id="CommonAppDataFolder">
+        <Directory Id="dir_1D0CB5AB_E90A_4E84_88E2_876DFC27CDA0" Name="HAMENAJESET">
+          <Component Id="comp_8D28BCF7_84F9_43FF_A05C_BBD92EAD764F" Guid="409CE2CE-B4DC-4F42-9C79-56FD549368AF" Permanent="no" SharedDllRefCount="no" Transitive="no">
+            <File Id="_A3309875_6164_453D_A30D_1DCECFC782C7" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="cfgFile.txt" Source="..\..\..\..\ProgramData\HAMENAJESET\cfgFile.txt" KeyPath="yes" >
+            </File>
+          </Component>
+          <Component Id="comp_3C7BB5AD_19CC_4AF7_96F4_D2FB693E27C4" Guid="7F1D7C71-4753-4C53-A4C6-3667FC3948BF" Permanent="no" SharedDllRefCount="no" Transitive="no">
+            <File Id="_4E53AE1B_90B2_4931_8240_67EFAB96095A" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="LettersList.txt" Source="..\..\..\..\ProgramData\HAMENAJESET\LettersList.txt" KeyPath="yes" />
+          </Component>
+          <Component Id="comp_B71B049F_8276_4FEE_BE51_7612E9E7424E" Guid="EC52D1EE-EEDC-43E4-97C4-D230814D2F0C" Permanent="no" SharedDllRefCount="no" Transitive="no">
+            <File Id="_3EB327EF_D421_434D_8613_31D48E0588C0" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="RiddleLog.txt" Source="..\..\..\..\ProgramData\HAMENAJESET\RiddleLog.txt" KeyPath="yes" />
+          </Component>
+          <Component Id="comp_D45BFAC1_7B35_4A44_9D83_65B4F8D0885D" Guid="EFE7D1DF-294A-4F4C-987D-B7BF96DB143A" Permanent="no" SharedDllRefCount="no" Transitive="no">
+            <File Id="_8C89B43D_BA3E_4BF5_A269_CD76F1B9BCA1" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="RiddlesList.txt" Source="..\..\..\..\ProgramData\HAMENAJESET\RiddlesList.txt" KeyPath="yes" />
+          </Component>
+          <Directory Id="dir_58B228C5_58FA_41E5_9284_5979AD735D4C" Name="SoundsImagesVideos">
+            <Component Id="comp_2AE85AE1_4D6B_4FED_B403_21279C0F0F5F" Guid="8BE0BC31-08B8-4AF7-988F-A59FEBFB6E85" Permanent="no" SharedDllRefCount="no" Transitive="no">
+              <File Id="_4AA9BCC3_6967_4367_A3CE_CED5722CDA2F" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="buzzer_x.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\buzzer_x.wav" KeyPath="yes" />
+            </Component>
+            <Component Id="comp_C16E60B9_DA69_42AB_8709_1D8F26BBF56F" Guid="5FA1F569-5316-4D32-805D-CED14565C82D" Permanent="no" SharedDllRefCount="no" Transitive="no">
+              <File Id="_FA4E8B7B_3EE3_4484_B9D3_4564BF438438" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="GLING.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\GLING.wav" KeyPath="yes" />
+            </Component>
+            <Component Id="comp_D9419E93_8652_47EC_9F1F_117E8604BCCB" Guid="DEF31F7A-EA47-4382-B7A8-0973D95F32E2" Permanent="no" SharedDllRefCount="no" Transitive="no">
+              <File Id="_B3FF159E_5237_4C49_97B6_38BAF705E2CE" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="kol_hakavod_lemushmush.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\kol_hakavod_lemushmush.wav" KeyPath="yes" />
+            </Component>
+            <Directory Id="dir_4B0AF330_4DC3_4562_9037_97CDEC64D29A" Name="letters_sounds">
+              <Component Id="comp_letters_sounds_files" Guid="7A0DA3A1-CB74-40DD-8223-2FA1557341DA" Permanent="no" SharedDllRefCount="no" Transitive="no">
+                <File Id="aleph" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="aleph.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\aleph.wav" KeyPath="yes" />
+                <File Id="bet" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="bet.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\bet.wav" />
+                <File Id="gimmel" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="gimmel.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\gimmel.wav" />
+                <File Id="dalet" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="dalet.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\dalet.wav" />
+                <File Id="hey" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="hey.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\hey.wav" />
+                <File Id="vav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="vav.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\vav.wav" />
+                <File Id="zayin" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="zayin.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\zayin.wav" />
+                <File Id="chet" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="chet.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\chet.wav" />
+                <File Id="tet" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="tet.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\tet.wav" />
+                <File Id="yud" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="yud.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\yud.wav" />
+                <File Id="kaf" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="kaf.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\kaf.wav" />
+                <File Id="kaf_sofit" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="kaf_sofit.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\kaf_sofit.wav" />
+                <File Id="lamed" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="lamed.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\lamed.wav" />
+                <File Id="mem" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="mem.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\mem.wav" />
+                <File Id="mem_sofit" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="mem_sofit.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\mem_sofit.wav" />
+                <File Id="nun" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="nun.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\nun.wav" />
+                <File Id="nun_sofit" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="nun_sofit.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\nun_sofit.wav" />
+                <File Id="samech" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="samech.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\samech.wav" />
+                <File Id="ayin" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="ayin.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\ayin.wav" />
+                <File Id="pey" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="pey.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\pey.wav" />
+                <File Id="pey_sofit" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="pey_sofit.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\pey_sofit.wav" />
+                <File Id="tsadie" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="tsadie.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\tsadie.wav" />
+                <File Id="tsadie_sofit" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="tsadie_sofit.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\tsadie_sofit.wav" />
+                <File Id="qof" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="qof.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\qof.wav" />
+                <File Id="resh" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="resh.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\resh.wav" />
+                <File Id="shin" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shin.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\shin.wav" />
+                <File Id="tav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="tav.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\tav.wav" />
+                <File Id="a" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="a.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\a.wav" />
+                <File Id="b" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="b.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\b.wav" />
+                <File Id="c" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="c.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\c.wav" />
+                <File Id="d" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="d.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\d.wav" />
+                <File Id="e" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="e.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\e.wav" />
+                <File Id="f" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="f.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\f.wav" />
+                <File Id="g" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="g.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\g.wav" />
+                <File Id="h" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="h.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\h.wav" />
+                <File Id="i" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="i.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\i.wav" />
+                <File Id="j" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="j.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\j.wav" />
+                <File Id="k" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="k.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\k.wav" />
+                <File Id="l" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="l.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\l.wav" />
+                <File Id="m" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="m.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\m.wav" />
+                <File Id="n" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="n.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\n.wav" />
+                <File Id="o" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="o.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\o.wav" />
+                <File Id="p" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="p.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\p.wav" />
+                <File Id="q" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="q.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\q.wav" />
+                <File Id="r" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="r.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\r.wav" />
+                <File Id="s" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="s.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\s.wav" />
+                <File Id="t" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="t.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\t.wav" />
+                <File Id="u" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="u.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\u.wav" />
+                <File Id="v" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="v.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\v.wav" />
+                <File Id="w" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="w.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\w.wav" />
+                <File Id="x" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="x.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\x.wav" />
+                <File Id="y" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="y.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\y.wav" />
+                <File Id="z" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="z.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\z.wav" />
+              </Component>
+            </Directory>
+            <Directory Id="dir_943C9D11_6956_4789_84EF_3846C5DA141A" Name="words_sounds">
+              <Component Id="comp_words_files" Guid="55558DB2-5A9F-4332-9961-7256E6D6261A" Permanent="no" SharedDllRefCount="no" Transitive="no">
+                <File Id="aba_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="aba.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\aba.jpg" KeyPath="yes" />
+                <File Id="aba_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="aba.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\aba.wav" />
+                <File Id="banana_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="banana.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\banana.jpg" />
+                <File Id="banana_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="banana.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\banana.wav" />
+                <File Id="bobsfog_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="bobsfog.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\bobsfog.jpg" />
+                <File Id="bobsfog_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="bobsfog.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\bobsfog.wav" />
+                <File Id="delet_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="delet.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\delet.jpg" />
+                <File Id="delet_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="delet.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\delet.wav" />
+                <File Id="deshe_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="deshe.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\deshe.jpg" />
+                <File Id="deshe_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="deshe.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\deshe.wav" />
+                <File Id="gamal_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="gamal.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\gamal.jpg" />
+                <File Id="gamal_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="gamal.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\gamal.wav" />
+                <File Id="gezer_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="gezer.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\gezer.jpg" />
+                <File Id="gezer_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="gezer.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\gezer.wav" />
+                <File Id="hitul_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="hitul.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\hitul.jpg" />
+                <File Id="hitul_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="hitul.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\hitul.wav" />
+                <File Id="kadur_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="kadur.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\kadur.jpg" />
+                <File Id="kadur_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="kadur.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\kadur.wav" />
+                <File Id="machshev_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="machshev.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\machshev.jpg" />
+                <File Id="machshev_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="machshev.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\machshev.wav" />
+                <File Id="madregot_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="madregot.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\madregot.jpg" />
+                <File Id="madregot_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="madregot.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\madregot.wav" />
+                <File Id="mitriya_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="mitriya.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\mitriya.jpg" />
+                <File Id="mitriya_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="mitriya.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\mitriya.wav" />
+                <File Id="naal_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="naal.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\naal.jpg" />
+                <File Id="naal_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="naal.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\naal.wav" />
+                <File Id="perah_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="perah.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\perah.jpg" />
+                <File Id="perah_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="perah.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\perah.wav" />
+                <File Id="sami_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sami.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sami.jpg" />
+                <File Id="sami_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sami.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sami.wav" />
+                <File Id="sefer_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sefer.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sefer.jpg" />
+                <File Id="sefer_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sefer.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sefer.wav" />
+                <File Id="shafan_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shafan.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shafan.jpg" />
+                <File Id="shafan_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shafan.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shafan.wav" />
+                <File Id="sherutim_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sherutim.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sherutim.jpg" />
+                <File Id="sherutim_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sherutim.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sherutim.wav" />
+                <File Id="shofar_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shofar.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shofar.jpg" />
+                <File Id="shofar_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shofar.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shofar.wav" />
+                <File Id="sigarya_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sigarya.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sigarya.jpg" />
+                <File Id="sigarya_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sigarya.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sigarya.wav" />
+                <File Id="televisia_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="televisia.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\televisia.jpg" />
+                <File Id="televisia_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="televisia.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\televisia.wav" />
+                <File Id="tik_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="tik.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\tik.jpg" />
+                <File Id="tik_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="tik.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\tik.wav" />
+                <File Id="zipor_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="zipor.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\zipor.jpg" />
+                <File Id="zipor_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="zipor.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\zipor.wav" />
+              </Component>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+  <Fragment>
+  </Fragment>
+</Wix>

@@ -1,6 +1,6 @@
 ﻿namespace SuspenderLib
 {
-    partial class EnglishSingleLetterForm
+    partial class HebrewWord_Full_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // EnglishSingleLetterForm
+            // display_richTextBox
+            // 
+            this.display_richTextBox.Location = new System.Drawing.Point(58, 137);
+            this.display_richTextBox.Visible = false;
+            // 
+            // answer_richTextBox
+            // 
+            this.answer_richTextBox.Location = new System.Drawing.Point(58, 137);
+            // 
+            // HebrewWord_Full_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Fuchsia;
-            this.ClientSize = new System.Drawing.Size(554, 474);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "EnglishSingleLetterForm";
-            this.Text = "EnglishSingleLetterForm";
+            this.BackColor = System.Drawing.SystemColors.Highlight;
+            this.ClientSize = new System.Drawing.Size(1054, 474);
+            this.Name = "HebrewWord_Full_Form";
+            this.Text = "HebrewWord_Full_Form";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -83,6 +83,12 @@
       <DependentUpon>HebrewWordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="HebrewWords.cs" />
+    <Compile Include="HebrewWord_Full_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HebrewWord_Full_Form.Designer.cs">
+      <DependentUpon>HebrewWord_Full_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="LastLetterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,11 +113,17 @@
     <EmbeddedResource Include="BasicRddleForm.resx">
       <DependentUpon>BasicRddleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EnglishSingleLetterForm.resx">
+      <DependentUpon>EnglishSingleLetterForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FirstLetterForm.resx">
       <DependentUpon>FirstLetterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HebrewWordForm.resx">
       <DependentUpon>HebrewWordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HebrewWord_Full_Form.resx">
+      <DependentUpon>HebrewWord_Full_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LastLetterForm.resx">
       <DependentUpon>LastLetterForm.cs</DependentUpon>

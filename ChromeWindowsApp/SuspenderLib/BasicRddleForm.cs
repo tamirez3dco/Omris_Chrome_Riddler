@@ -202,15 +202,15 @@ namespace SuspenderLib
             reject_key_pressing = false;
             if (answerWasCorrect)
             {
+                letters_counter++;
                 gling_player.Play();
-                if (answer_richTextBox.Text == display_richTextBox.Text)
+                if (letters_counter == riddleWord.english_chars.Length)
                 {
                     play_kolkavod_and_set_close_timers();
                     return;
                 }
                 else
                 {
-                    letters_counter++;
                     next_correct_key = riddleWord.english_chars[letters_counter];
                 }
             }
@@ -269,14 +269,6 @@ namespace SuspenderLib
         {
             answer_richTextBox_KeyDown(sender, e);
             return;
-            Logger.Log("SuspenderLib.display_richTextBox_KeyDown(e.KeyCode=" + e.KeyCode.ToString() + ", e.KeyValue=" + e.KeyValue.ToString() + ")");
-
-            e.Handled = true;
-
-            if (reject_key_pressing) return;
-            check_keystroke(e);
-            return;
-
         }
 
         public virtual void display_richTextBox_KeyPress(object sender, KeyPressEventArgs e)

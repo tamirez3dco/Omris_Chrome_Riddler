@@ -51,6 +51,7 @@ namespace HAMENAJES
                     sw.WriteLine("False");
                     sw.WriteLine("False");
                     sw.WriteLine("False");
+                    sw.WriteLine("False");
                 }
             }
 
@@ -63,6 +64,7 @@ namespace HAMENAJES
                 checkBox2.Checked = bool.Parse(sr.ReadLine());
                 checkBox3.Checked = bool.Parse(sr.ReadLine());
                 checkBox4.Checked = bool.Parse(sr.ReadLine());
+                checkBox5.Checked = bool.Parse(sr.ReadLine());
 
                 delayScrollBarLabel.Text = "Time between riddles : " + delayChooserTrackBar.Value.ToString() + " seconds.";
             }
@@ -81,6 +83,7 @@ namespace HAMENAJES
                 sw.WriteLine(checkBox2.Checked);
                 sw.WriteLine(checkBox3.Checked);
                 sw.WriteLine(checkBox4.Checked);
+                sw.WriteLine(checkBox5.Checked);
             }
 
             Processer.SuspendProcess(programToHaltTextBox.Text, true);
@@ -146,6 +149,7 @@ namespace HAMENAJES
             if (checkBox2.Checked) allowed_types.Add(2);
             if (checkBox3.Checked) allowed_types.Add(3);
             if (checkBox4.Checked) allowed_types.Add(4);
+            if (checkBox5.Checked) allowed_types.Add(5);
 
             RiddleType chosenType = allowed_types[randomer.Next(0, allowed_types.Count())];
             if (DEBUGME)
@@ -190,6 +194,9 @@ namespace HAMENAJES
                     break;
                 case 4:
                     rf = new EnglishSingleLetterForm();
+                    break;
+                case 5:
+                    rf = new HebrewWord_Full_Form();
                     break;
             }
             rf.buzzer_player = buzzer_player;
@@ -406,6 +413,7 @@ namespace HAMENAJES
             if (checkBox2.Checked) return true;
             if (checkBox3.Checked) return true;
             if (checkBox4.Checked) return true;
+            if (checkBox5.Checked) return true;
             return false;
         }
 

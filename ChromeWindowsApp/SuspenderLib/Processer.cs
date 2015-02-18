@@ -145,9 +145,7 @@ namespace SuspenderLib
         
         
         public static String riddleAppExecutablePath;
-        public static String mainParentFolderPath;
         public static String mainResourcesPath;// = @"SoundsImagesVideos\";
-        public static String mainPsSuspendPath;// = @"fPssuspend\";
         public static String listPath;
         public static String lettersPath;
         public static String mainDataPath;
@@ -157,12 +155,10 @@ namespace SuspenderLib
             riddleAppExecutablePath = Path.GetDirectoryName(Application.ExecutablePath); // riddleApp/bin/Debug
             DirectoryInfo riddleAppExecutableDirectoryInfo = new DirectoryInfo(riddleAppExecutablePath);
 
-            mainParentFolderPath = riddleAppExecutableDirectoryInfo.Parent.Parent.Parent.FullName;
-            mainPsSuspendPath = mainParentFolderPath + Path.DirectorySeparatorChar + "Pssuspend" + Path.DirectorySeparatorChar;
-            listPath = mainParentFolderPath + Path.DirectorySeparatorChar + "SuspenderLib" + Path.DirectorySeparatorChar + "RiddlesList.txt";
-            lettersPath = mainParentFolderPath + Path.DirectorySeparatorChar + "SuspenderLib" + Path.DirectorySeparatorChar + "LettersList.txt";
-            mainDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + Path.DirectorySeparatorChar + "Omrikusher";
+            mainDataPath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + Path.DirectorySeparatorChar + "HAMENAJESET";
             mainResourcesPath = mainDataPath + Path.DirectorySeparatorChar + "SoundsImagesVideos" + Path.DirectorySeparatorChar;
+            listPath = mainDataPath + Path.DirectorySeparatorChar + "RiddlesList.txt";
+            lettersPath = mainDataPath + Path.DirectorySeparatorChar + "LettersList.txt";
         }
 
 
@@ -222,7 +218,7 @@ namespace SuspenderLib
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
 
-            psi.WorkingDirectory = mainPsSuspendPath;
+            psi.WorkingDirectory = riddleAppExecutablePath;
             psi.FileName = psi.WorkingDirectory + Path.DirectorySeparatorChar + "pssuspend.exe";
             if (resume) psi.Arguments = "-r " + processName;
             else psi.Arguments = processName;
@@ -234,7 +230,7 @@ namespace SuspenderLib
             Logger.Log("KillRiddleApp()");
             SuspenderLib.Processer.setPathes();
             ProcessStartInfo psi = new ProcessStartInfo();
-            psi.WorkingDirectory = mainPsSuspendPath;
+            psi.WorkingDirectory = riddleAppExecutablePath;
             psi.FileName = "taskkill";
             psi.Arguments = "/F /IM RiddleApp.exe";
             Process.Start(psi);
