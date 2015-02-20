@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="Installer" Language="1033" Version="1.0.0.0" Manufacturer="Microsoft" UpgradeCode="334d47b8-d6a4-4bb0-82c8-7f6b6ab34e4e">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <Product Id="{5F8B5D49-5DA4-4CF9-B53A-0E2A8279E9E0}" Name="HAMENAJESET" Language="1033" Version="1.0.0.0" Manufacturer="Omrikusher" UpgradeCode="334d47b8-d6a4-4bb0-82c8-7f6b6ab34e4e">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
+    <Icon Id="ProductIcon" SourceFile="hamenajeset.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="ProductIcon"/>
+    <Property Id="LicenseAccepted" Value="1"/>
     <Feature Id="ProductFeature" Title="Installer" Level="1">
       <ComponentGroupRef Id="HAMENAJESET.Binaries" />
       <ComponentRef Id="comp_6078DF18_DAA3_4CCE_8FEF_7C0874BFD961" />
-      <ComponentRef Id="comp_9646176E_E2BB_42AF_A78A_ADDE71A03377" />
       <ComponentRef Id="comp_8D28BCF7_84F9_43FF_A05C_BBD92EAD764F" />
       <ComponentRef Id="comp_3C7BB5AD_19CC_4AF7_96F4_D2FB693E27C4" />
       <ComponentRef Id="comp_B71B049F_8276_4FEE_BE51_7612E9E7424E" />
@@ -15,29 +17,54 @@
       <ComponentRef Id="comp_2AE85AE1_4D6B_4FED_B403_21279C0F0F5F" />
       <ComponentRef Id="comp_C16E60B9_DA69_42AB_8709_1D8F26BBF56F" />
       <ComponentRef Id="comp_D9419E93_8652_47EC_9F1F_117E8604BCCB" />
+      <ComponentRef Id="AppDataFolderComponent" />
       <ComponentRef Id="comp_letters_sounds_files" />
       <ComponentRef Id="comp_words_files" />
+      <ComponentRef Id="ApplicationShortcuts"/>
+      <ComponentRef Id="RegistryEntries"/>
     </Feature>
-  </Product>
+    <!-- Step 2: Add UI to your installer / Step 4: Trigger the custom action -->
+    <UI>
+      <UIRef Id="WixUI_Minimal" />
+      <Publish Dialog="ExitDialog"
+          Control="Finish"
+          Event="DoAction"
+          Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    </UI>
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Hamenajeset NOW!!" />
+
+    <!-- Step 3: Include the custom action -->
+    <Property Id="WixShellExecTarget" Value="hamenajeset.exe" />
+    <CustomAction Id="LaunchApplication"
+        BinaryKey="WixCA"
+        DllEntry="WixShellExec"
+        Impersonate="yes" />  </Product>
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="dir_66689966_16F5_478D_A55D_4E7C9BE429E7" Name="HAMENAJESET">
+        <Directory Id="ExecutablesInstallDir" Name="HAMENAJESET">
           <Component Id="comp_6078DF18_DAA3_4CCE_8FEF_7C0874BFD961" Guid="860AA2EF-C125-4893-8C58-438B051E1139" Permanent="no" SharedDllRefCount="no" Transitive="no">
             <File Id="_FA71078C_B927_40E9_9BE8_B18028F30CB4" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="NAudio.dll" Source="..\packages\NAudio.1.7.2\lib\net35\NAudio.dll" KeyPath="yes" />
             <File Id="_E3E43EBC_CD6F_42BF_81CB_E46077E3340E" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="SuspenderLib.dll" Source="..\SuspenderLib\bin\Debug\SuspenderLib.dll" />
-            <File Id="_66187A1B_D2DE_41B2_B7CA_EE4EE527D228" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="System.Data.SqlServerCe.dll" Source="..\..\..\..\Program Files (x86)\Microsoft SQL Server Compact Edition\v4.0\Desktop\System.Data.SqlServerCe.dll" />
-          </Component>
-          <Component Id="comp_9646176E_E2BB_42AF_A78A_ADDE71A03377" Guid="E0005EFF-C0D7-4E3C-89E8-5D687BF03CA7" Permanent="no" SharedDllRefCount="no" Transitive="no">
-            <File Id="_B5A94424_826F_476F_B5A4_A2557EE50A6B" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="pssuspend.exe" Source="..\Riddler2\bin\Debug\pssuspend.exe" KeyPath="yes" />
+            <!-- <File Id="_66187A1B_D2DE_41B2_B7CA_EE4EE527D228" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="System.Data.SqlServerCe.dll" Source="..\..\..\..\Program Files (x86)\Microsoft SQL Server Compact Edition\v4.0\Desktop\System.Data.SqlServerCe.dll" />  -->
+            <File Id="_B5A94424_826F_476F_B5A4_A2557EE50A6B" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="pssuspend.exe" Source="..\Riddler2\bin\Debug\pssuspend.exe" />
+            <RemoveFile Id="RemoveFiles" Name="*" On="uninstall" />
+<!--            <RemoveFile Id="RemoveSuspenderLib.dll" Name="SuspenderLib.dll" On="uninstall" />  -->
+<!--            <RemoveFile Id="Removepssuspend.exe" Name="pssuspend.exe" On="uninstall" />        -->
           </Component>
           <Directory Id="HAMENAJESET.Binaries" />
         </Directory>
       </Directory>
       <Directory Id="CommonAppDataFolder">
         <Directory Id="dir_1D0CB5AB_E90A_4E84_88E2_876DFC27CDA0" Name="HAMENAJESET">
+          <Component Id="AppDataFolderComponent" Guid="{452F1756-DF68-4957-886B-71AF579E36CB}">
+            <CreateFolder>
+              <util:PermissionEx User="Everyone" GenericAll="yes" />
+            </CreateFolder>
+          </Component> 
           <Component Id="comp_8D28BCF7_84F9_43FF_A05C_BBD92EAD764F" Guid="409CE2CE-B4DC-4F42-9C79-56FD549368AF" Permanent="no" SharedDllRefCount="no" Transitive="no">
             <File Id="_A3309875_6164_453D_A30D_1DCECFC782C7" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="cfgFile.txt" Source="..\..\..\..\ProgramData\HAMENAJESET\cfgFile.txt" KeyPath="yes" >
+              <Permission User="Everyone" GenericAll="yes" />
             </File>
           </Component>
           <Component Id="comp_3C7BB5AD_19CC_4AF7_96F4_D2FB693E27C4" Guid="7F1D7C71-4753-4C53-A4C6-3667FC3948BF" Permanent="no" SharedDllRefCount="no" Transitive="no">
@@ -169,6 +196,28 @@
           </Directory>
         </Directory>
       </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ProgramMenuSubfolder" Name="HAMENAJESET">
+          <Component Id="ApplicationShortcuts" Guid="{CDD3AFD9-9D4E-40E9-9AD4-6F0275A4CE36}">
+            <Shortcut Id="ApplicationShortcut1" Name="Run HAMENAJESET" Description="Click this shortcut to start HAMENAJESET program."
+                      Target="[ExecutablesInstallDir]HAMENAJESET.exe" WorkingDirectory="INSTALLDIR" Icon="ProductIcon"/>
+            <Shortcut Id="UninstallProduct"
+                         Name="Uninstall HAMENAJESET"
+                         Description="Uninstalls HAMENAJESET"
+                         Target="[System64Folder]msiexec.exe"
+                         Arguments="/x {5F8B5D49-5DA4-4CF9-B53A-0E2A8279E9E0}"/>
+            <RegistryValue Root="HKCU" Key="Software\Omrikusher\HAMENAJESET"
+                      Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+            <RemoveFolder Id="ProgramMenuSubfolder" On="uninstall"/>
+          </Component>
+        </Directory>
+      </Directory>
+      <Component Id="RegistryEntries" Guid="{AC095C9D-600D-4026-93C8-94950C949B8A}">
+        <RegistryKey Root="HKCU"
+                     Key="Software\Sysinternals\PsSuspend">
+          <RegistryValue Type="integer" Name="EulaAccepted" Value="1" KeyPath="yes"/>
+        </RegistryKey>
+      </Component>    
     </Directory>
   </Fragment>
   <Fragment>
