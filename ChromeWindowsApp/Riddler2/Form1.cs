@@ -52,6 +52,7 @@ namespace HAMENAJES
                     sw.WriteLine("False");
                     sw.WriteLine("False");
                     sw.WriteLine("False");
+                    sw.WriteLine("False");
                 }
             }
 
@@ -65,6 +66,7 @@ namespace HAMENAJES
                 checkBox3.Checked = bool.Parse(sr.ReadLine());
                 checkBox4.Checked = bool.Parse(sr.ReadLine());
                 checkBox5.Checked = bool.Parse(sr.ReadLine());
+                checkBox6.Checked = bool.Parse(sr.ReadLine());
 
                 delayScrollBarLabel.Text = "Time between riddles : " + delayChooserTrackBar.Value.ToString() + " seconds.";
             }
@@ -84,6 +86,7 @@ namespace HAMENAJES
                 sw.WriteLine(checkBox3.Checked);
                 sw.WriteLine(checkBox4.Checked);
                 sw.WriteLine(checkBox5.Checked);
+                sw.WriteLine(checkBox6.Checked);
             }
 
             Processer.SuspendProcess(programToHaltTextBox.Text, true);
@@ -150,6 +153,7 @@ namespace HAMENAJES
             if (checkBox3.Checked) allowed_types.Add(3);
             if (checkBox4.Checked) allowed_types.Add(4);
             if (checkBox5.Checked) allowed_types.Add(5);
+            if (checkBox6.Checked) allowed_types.Add(6);
 
             RiddleType chosenType = allowed_types[randomer.Next(0, allowed_types.Count())];
             if (DEBUGME)
@@ -197,6 +201,9 @@ namespace HAMENAJES
                     break;
                 case 5:
                     rf = new HebrewWord_Full_Form();
+                    break;
+                case 6:
+                    rf = new ImageToWordForm();
                     break;
             }
             rf.buzzer_player = buzzer_player;
@@ -414,6 +421,7 @@ namespace HAMENAJES
             if (checkBox3.Checked) return true;
             if (checkBox4.Checked) return true;
             if (checkBox5.Checked) return true;
+            if (checkBox6.Checked) return true;
             return false;
         }
 
@@ -447,6 +455,31 @@ namespace HAMENAJES
             }
 
         }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = checkBox5;
+            if (chk.Checked) label3.Visible = false;
+            else if (!check_if_one_riddle_is_checked())
+            {
+                label3VisibiltyTimer.Start();
+                chk.Checked = true;
+            }
+
+        }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = checkBox6;
+            if (chk.Checked) label3.Visible = false;
+            else if (!check_if_one_riddle_is_checked())
+            {
+                label3VisibiltyTimer.Start();
+                chk.Checked = true;
+            }
+
+        }
+
 
     }
 

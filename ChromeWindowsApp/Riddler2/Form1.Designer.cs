@@ -40,6 +40,8 @@
             this.programToHaltTextBox = new System.Windows.Forms.TextBox();
             this.ProgramToHaltLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
@@ -56,7 +58,6 @@
             this.activateTimer = new System.Windows.Forms.Timer(this.components);
             this.label3VisibiltyTimer = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delayChooserTrackBar)).BeginInit();
@@ -183,6 +184,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkBox6);
             this.tabPage2.Controls.Add(this.checkBox5);
             this.tabPage2.Controls.Add(this.checkBox4);
             this.tabPage2.Controls.Add(this.label3);
@@ -198,11 +200,35 @@
             this.tabPage2.Text = "ChooseRiddles";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.checkBox6.Location = new System.Drawing.Point(60, 217);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(181, 33);
+            this.checkBox6.TabIndex = 7;
+            this.checkBox6.Text = "Hebrew Read";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.checkBox5.Location = new System.Drawing.Point(60, 178);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(181, 33);
+            this.checkBox5.TabIndex = 6;
+            this.checkBox5.Text = "Hebrew FULL";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.checkBox4.Location = new System.Drawing.Point(60, 228);
+            this.checkBox4.Location = new System.Drawing.Point(60, 270);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(254, 33);
             this.checkBox4.TabIndex = 5;
@@ -215,7 +241,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(56, 264);
+            this.label3.Location = new System.Drawing.Point(56, 339);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(370, 24);
             this.label3.TabIndex = 4;
@@ -361,17 +387,6 @@
             this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
             this.dataGridViewButtonColumn1.Width = 70;
             // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.checkBox5.Location = new System.Drawing.Point(60, 178);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(181, 33);
-            this.checkBox5.TabIndex = 6;
-            this.checkBox5.Text = "Hebrew FULL";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,6 +444,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox6;
     }
 }
 

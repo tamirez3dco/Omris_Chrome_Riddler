@@ -30,6 +30,7 @@ namespace SuspenderLib
         public List<System.Media.SoundPlayer> havara_players;
         int havara_counter = 0;
         public bool riddleAboutToClose = false;
+        public bool playWordSoundOnClick = true;
 
         public HorizontalAlignment desired_alignment = HorizontalAlignment.Center;
 
@@ -229,12 +230,12 @@ namespace SuspenderLib
 
         private void answer_richTextBox_Click(object sender, EventArgs e)
         {
-            word_player.Play();
+            if (playWordSoundOnClick)  word_player.Play();
         }
 
         private void display_richTextBox_Click(object sender, EventArgs e)
         {
-            word_player.Play();
+            if (playWordSoundOnClick) word_player.Play();
         }
 
         private void BasicRiddlerForm_KeyPress(object sender, KeyPressEventArgs e)
@@ -245,7 +246,7 @@ namespace SuspenderLib
 
         private void BasicRiddleForm_MouseDown(object sender, MouseEventArgs e)
         {
-            word_player.Play();
+            if (playWordSoundOnClick)  word_player.Play();
         }
 
 

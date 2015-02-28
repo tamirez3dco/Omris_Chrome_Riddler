@@ -4,9 +4,9 @@
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
     <Icon Id="ProductIcon" SourceFile="hamenajeset.ico"/>
     <Property Id="ARPPRODUCTICON" Value="ProductIcon"/>
-    <Property Id="LicenseAccepted" Value="1"/>
     <Feature Id="ProductFeature" Title="Installer" Level="1">
       <ComponentGroupRef Id="HAMENAJESET.Binaries" />
       <ComponentRef Id="comp_6078DF18_DAA3_4CCE_8FEF_7C0874BFD961" />
@@ -23,36 +23,33 @@
       <ComponentRef Id="ApplicationShortcuts"/>
       <ComponentRef Id="RegistryEntries"/>
     </Feature>
-    <!-- Step 2: Add UI to your installer / Step 4: Trigger the custom action -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Hamenajeset NOW !!!" />
+    <Property Id="WIXUI_INSTALLDIR" Value="EXECUTABLESINSTALLDIR" />
+    <Property Id="WixShellExecTarget" Value="[EXECUTABLESINSTALLDIR]" />
+    <CustomAction Id="LaunchApplication" ExeCommand="[EXECUTABLESINSTALLDIR]HAMENAJESET.exe" Directory="EXECUTABLESINSTALLDIR" Impersonate="yes" />
     <UI>
       <UIRef Id="WixUI_Minimal" />
-      <Publish Dialog="ExitDialog"
-          Control="Finish"
-          Event="DoAction"
-          Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    <Publish Dialog="ExitDialog" 
+            Control="Finish" 
+            Event="DoAction" 
+            Value="LaunchApplication">WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed</Publish>
+    <Property Id="LicenseAccepted" Value="1"/>
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
     </UI>
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Hamenajeset NOW!!" />
-
-    <!-- Step 3: Include the custom action -->
-    <Property Id="WixShellExecTarget" Value="hamenajeset.exe" />
-    <CustomAction Id="LaunchApplication"
-        BinaryKey="WixCA"
-        DllEntry="WixShellExec"
-        Impersonate="yes" />  </Product>
+  </Product>
   <Fragment>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="ExecutablesInstallDir" Name="HAMENAJESET">
+        <Directory Id="EXECUTABLESINSTALLDIR" Name="HAMENAJESET">
           <Component Id="comp_6078DF18_DAA3_4CCE_8FEF_7C0874BFD961" Guid="860AA2EF-C125-4893-8C58-438B051E1139" Permanent="no" SharedDllRefCount="no" Transitive="no">
             <File Id="_FA71078C_B927_40E9_9BE8_B18028F30CB4" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="NAudio.dll" Source="..\packages\NAudio.1.7.2\lib\net35\NAudio.dll" KeyPath="yes" />
             <File Id="_E3E43EBC_CD6F_42BF_81CB_E46077E3340E" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="SuspenderLib.dll" Source="..\SuspenderLib\bin\Debug\SuspenderLib.dll" />
-            <!-- <File Id="_66187A1B_D2DE_41B2_B7CA_EE4EE527D228" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="System.Data.SqlServerCe.dll" Source="..\..\..\..\Program Files (x86)\Microsoft SQL Server Compact Edition\v4.0\Desktop\System.Data.SqlServerCe.dll" />  -->
             <File Id="_B5A94424_826F_476F_B5A4_A2557EE50A6B" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="pssuspend.exe" Source="..\Riddler2\bin\Debug\pssuspend.exe" />
-            <RemoveFile Id="RemoveFiles" Name="*" On="uninstall" />
-<!--            <RemoveFile Id="RemoveSuspenderLib.dll" Name="SuspenderLib.dll" On="uninstall" />  -->
-<!--            <RemoveFile Id="Removepssuspend.exe" Name="pssuspend.exe" On="uninstall" />        -->
+<!--            <RemoveFile Id="RemoveFiles" Name="*" On="uninstall" />   -->
+            <RemoveFile Id="RemoveSuspenderLib.dll" Name="SuspenderLib.dll" On="uninstall" />  
+            <RemoveFile Id="Removepssuspend.exe" Name="pssuspend.exe" On="uninstall" />       
           </Component>
-          <Directory Id="HAMENAJESET.Binaries" />
+          <Directory Id="HAMENAJESET.Binaries" />  
         </Directory>
       </Directory>
       <Directory Id="CommonAppDataFolder">
@@ -177,6 +174,8 @@
                 <File Id="sami_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sami.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sami.wav" />
                 <File Id="sefer_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sefer.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sefer.jpg" />
                 <File Id="sefer_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sefer.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sefer.wav" />
+                <File Id="shalat_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shalat.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shalat.jpg" />
+                <File Id="shalat_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shalat.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shalat.wav" />
                 <File Id="shafan_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shafan.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shafan.jpg" />
                 <File Id="shafan_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="shafan.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\shafan.wav" />
                 <File Id="sherutim_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="sherutim.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\sherutim.jpg" />
@@ -200,7 +199,7 @@
         <Directory Id="ProgramMenuSubfolder" Name="HAMENAJESET">
           <Component Id="ApplicationShortcuts" Guid="{CDD3AFD9-9D4E-40E9-9AD4-6F0275A4CE36}">
             <Shortcut Id="ApplicationShortcut1" Name="Run HAMENAJESET" Description="Click this shortcut to start HAMENAJESET program."
-                      Target="[ExecutablesInstallDir]HAMENAJESET.exe" WorkingDirectory="INSTALLDIR" Icon="ProductIcon"/>
+                      Target="[EXECUTABLESINSTALLDIR]HAMENAJESET.exe" WorkingDirectory="INSTALLDIR" Icon="ProductIcon"/>
             <Shortcut Id="UninstallProduct"
                          Name="Uninstall HAMENAJESET"
                          Description="Uninstalls HAMENAJESET"
