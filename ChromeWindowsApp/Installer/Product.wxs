@@ -22,6 +22,7 @@
       <ComponentRef Id="comp_words_files" />
       <ComponentRef Id="ApplicationShortcuts"/>
       <ComponentRef Id="RegistryEntries"/>
+      <ComponentRef Id="ApplicationShortcutDesktop"/>
     </Feature>
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Hamenajeset NOW !!!" />
     <Property Id="WIXUI_INSTALLDIR" Value="EXECUTABLESINSTALLDIR" />
@@ -195,6 +196,25 @@
           </Directory>
         </Directory>
       </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop">
+        <Component Id="ApplicationShortcutDesktop" Guid="{0A075FB9-5F93-499A-B8D4-306CD8DA9888}">
+          <Shortcut Id="ApplicationDesktopShortcut"
+             Name="HAMENAJESET"
+             Description="Click this shortcut to start HAMENAJESET program."
+             Target="[EXECUTABLESINSTALLDIR]HAMENAJESET.exe"
+             WorkingDirectory="INSTALLDIR"
+             Icon="ProductIcon"
+          />
+          <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+       <RegistryValue
+        Root="HKCU"
+        Key="Software/HAMENAJESET"
+        Name="installed"
+        Type="integer"
+        Value="1"
+        KeyPath="yes"/>
+        </Component>
+      </Directory>  
       <Directory Id="ProgramMenuFolder">
         <Directory Id="ProgramMenuSubfolder" Name="HAMENAJESET">
           <Component Id="ApplicationShortcuts" Guid="{CDD3AFD9-9D4E-40E9-9AD4-6F0275A4CE36}">
