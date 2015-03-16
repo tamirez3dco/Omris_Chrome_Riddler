@@ -173,7 +173,7 @@ namespace SuspenderLib
             return true;
         }
 
-        private void BasicRiddleForm_KeyDown(object sender, KeyEventArgs e)
+        public virtual void BasicRiddleForm_KeyDown(object sender, KeyEventArgs e)
         {
             answer_richTextBox_KeyDown(sender, e);
             return;
@@ -238,7 +238,7 @@ namespace SuspenderLib
             if (playWordSoundOnClick) word_player.Play();
         }
 
-        private void BasicRiddlerForm_KeyPress(object sender, KeyPressEventArgs e)
+        public virtual void BasicRiddlerForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             answer_richTextBox_KeyPress(sender, e);
             return;

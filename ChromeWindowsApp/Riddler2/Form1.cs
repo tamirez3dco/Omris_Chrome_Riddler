@@ -53,6 +53,7 @@ namespace HAMENAJES
                     sw.WriteLine("False");
                     sw.WriteLine("False");
                     sw.WriteLine("False");
+                    sw.WriteLine("4");
                 }
             }
 
@@ -66,8 +67,16 @@ namespace HAMENAJES
                 checkBox3.Checked = bool.Parse(sr.ReadLine());
                 checkBox4.Checked = bool.Parse(sr.ReadLine());
                 checkBox5.Checked = bool.Parse(sr.ReadLine());
-                checkBox6.Checked = bool.Parse(sr.ReadLine());
+                String s = sr.ReadLine();
+                checkBox6.Checked = bool.Parse(s);
+                s = sr.ReadLine();
 
+                numMesichimComboBox.SelectedItem = s;
+/*                
+                s = sr.ReadLine();
+                int i = int.Parse(s);
+                numMesichimComboBox.SelectedItem = s;
+*/
                 delayScrollBarLabel.Text = "Time between riddles : " + delayChooserTrackBar.Value.ToString() + " seconds.";
             }
 
@@ -87,6 +96,7 @@ namespace HAMENAJES
                 sw.WriteLine(checkBox4.Checked);
                 sw.WriteLine(checkBox5.Checked);
                 sw.WriteLine(checkBox6.Checked);
+                sw.WriteLine(numMesichimComboBox.SelectedItem.ToString());
             }
 
             Processer.SuspendProcess(programToHaltTextBox.Text, true);
@@ -204,6 +214,8 @@ namespace HAMENAJES
                     break;
                 case 6:
                     rf = new ImageToWordForm();
+                    ImageToWordForm rrf = (ImageToWordForm)rf;
+                    rrf.num_of_answers = int.Parse((String)numMesichimComboBox.SelectedItem);
                     break;
             }
             rf.buzzer_player = buzzer_player;

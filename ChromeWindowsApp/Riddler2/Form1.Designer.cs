@@ -40,6 +40,7 @@
             this.programToHaltTextBox = new System.Windows.Forms.TextBox();
             this.ProgramToHaltLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.numMesichimComboBox = new System.Windows.Forms.ComboBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
@@ -58,6 +59,7 @@
             this.activateTimer = new System.Windows.Forms.Timer(this.components);
             this.label3VisibiltyTimer = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delayChooserTrackBar)).BeginInit();
@@ -184,6 +186,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.numMesichimComboBox);
             this.tabPage2.Controls.Add(this.checkBox6);
             this.tabPage2.Controls.Add(this.checkBox5);
             this.tabPage2.Controls.Add(this.checkBox4);
@@ -199,6 +203,20 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ChooseRiddles";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // numMesichimComboBox
+            // 
+            this.numMesichimComboBox.FormattingEnabled = true;
+            this.numMesichimComboBox.Items.AddRange(new object[] {
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"});
+            this.numMesichimComboBox.Location = new System.Drawing.Point(245, 222);
+            this.numMesichimComboBox.Name = "numMesichimComboBox";
+            this.numMesichimComboBox.Size = new System.Drawing.Size(97, 21);
+            this.numMesichimComboBox.TabIndex = 8;
             // 
             // checkBox6
             // 
@@ -387,6 +405,15 @@
             this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
             this.dataGridViewButtonColumn1.Width = 70;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(349, 226);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Num of optional answers";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,6 +472,8 @@
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.ComboBox numMesichimComboBox;
+        private System.Windows.Forms.Label label4;
     }
 }
 

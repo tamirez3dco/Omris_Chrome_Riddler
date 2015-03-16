@@ -115,7 +115,7 @@ namespace WindowsFormsApplication1
 
         private void button9_Click(object sender, EventArgs e)
         {
-            Processer.SuspendProcess("Chrome.exe");
+            Processer.SuspendProcess2("chrome");
         }
 
         private void button10_Click(object sender, EventArgs e)

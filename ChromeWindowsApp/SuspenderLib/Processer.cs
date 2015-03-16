@@ -92,15 +92,23 @@ namespace SuspenderLib
             }
         }
 
-        private static void SuspendProcess(int pid)
+
+        public static void SuspendProcess2(String name)
         {
-            var process = Process.GetProcessById(pid);
+            Process[] procs  = Process.GetProcessesByName(name);
+            foreach(Process p in procs)
+            {
+                Processer.SuspendProcess2(p);
+            }
+            
+        }
 
-            if (process.ProcessName == string.Empty)
-                return;
-
+        private static void SuspendProcess2(Process process)
+        {
+            
             foreach (ProcessThread pT in process.Threads)
             {
+//                Process.
                 IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
 
                 if (pOpenThread == IntPtr.Zero)
