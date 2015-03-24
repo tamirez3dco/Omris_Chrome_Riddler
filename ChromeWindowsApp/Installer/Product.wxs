@@ -139,11 +139,16 @@
                 <File Id="x" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="x.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\x.wav" />
                 <File Id="y" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="y.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\y.wav" />
                 <File Id="z" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="z.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\z.wav" />
+                <File Id="revach" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="revach.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\letters_sounds\revach.wav" />
               </Component>
             </Directory>
             <Directory Id="dir_943C9D11_6956_4789_84EF_3846C5DA141A" Name="words_sounds">
               <Component Id="comp_words_files" Guid="55558DB2-5A9F-4332-9961-7256E6D6261A" Permanent="no" SharedDllRefCount="no" Transitive="no">
-                <File Id="aba_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="aba.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\aba.jpg" KeyPath="yes" />
+                <File Id="moshe_bateiva_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="moshe_bateiva.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\moshe_bateiva.jpg" KeyPath="yes" />
+                <File Id="moshe_bateiva_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="moshe_bateiva.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\moshe_bateiva.wav" />
+                <File Id="bat_paro_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="bat_paro.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\bat_paro.jpg" />
+                <File Id="bat_paro_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="bat_paro.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\bat_paro.wav" />
+                <File Id="aba_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="aba.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\aba.jpg" />
                 <File Id="aba_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="aba.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\aba.wav" />
                 <File Id="banana_jpg" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="banana.jpg" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\banana.jpg" />
                 <File Id="banana_wav" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="banana.wav" Source="..\..\..\..\ProgramData\HAMENAJESET\SoundsImagesVideos\words_sounds\banana.wav" />

@@ -89,6 +89,7 @@ namespace WindowsFormsApplication1
 
         private void Form1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            //Debug.WriteLine("e.value=" + e.
             e.Handled = true;
         }
 
@@ -121,6 +122,10 @@ namespace WindowsFormsApplication1
         private void button10_Click(object sender, EventArgs e)
         {
             Processer.ResumeChromes();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
         }
     }
 }

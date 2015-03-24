@@ -110,6 +110,8 @@ namespace SuspenderLib
                 display_richTextBox.Select(0, 0);
 
                 // TBD - hide Caret
+                display_richTextBox.Font = BasicRddleForm.checkFontSizeForStringControl(riddleWord.getUnicodeWord(), display_richTextBox);
+                answer_richTextBox.Font = BasicRddleForm.checkFontSizeForStringControl(riddleWord.getUnicodeWord(), answer_richTextBox);
 
                 // fill word
                 display_richTextBox.Text = riddleWord.getUnicodeWord();
@@ -150,6 +152,19 @@ namespace SuspenderLib
             delay_first_sound_timer.Stop();
             if (play_havaras_when_shown) PlayHavara();
             else word_player.Play();
+        }
+
+        public static Font checkFontSizeForStringControl(String s, Control c)
+        {
+            Font f = c.Font;
+            int trySize = (int)f.Size;
+            Font tryFont = new Font(f.FontFamily, trySize);
+            while (c.CreateGraphics().MeasureString(s, tryFont).Width > c.Width - 10)
+            {
+                trySize -= 5;
+                tryFont = new Font(f.FontFamily, trySize);
+            }
+            return tryFont;
         }
 
 

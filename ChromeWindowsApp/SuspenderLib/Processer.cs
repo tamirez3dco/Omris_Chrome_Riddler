@@ -108,17 +108,23 @@ namespace SuspenderLib
             
             foreach (ProcessThread pT in process.Threads)
             {
-//                Process.
-                IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
-
-                if (pOpenThread == IntPtr.Zero)
+                try
                 {
-                    continue;
+                    IntPtr pOpenThread = OpenThread(ThreadAccess.SUSPEND_RESUME, false, (uint)pT.Id);
+
+                    if (pOpenThread == IntPtr.Zero)
+                    {
+                        continue;
+                    }
+
+                    SuspendThread(pOpenThread);
+
+                    CloseHandle(pOpenThread);
                 }
-
-                SuspendThread(pOpenThread);
-
-                CloseHandle(pOpenThread);
+                catch (Exception e)
+                {
+                    MessageBox.Show("balagan");
+                }
             }
         }
 

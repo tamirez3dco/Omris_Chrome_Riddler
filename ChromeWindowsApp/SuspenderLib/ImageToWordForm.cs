@@ -244,6 +244,7 @@ namespace SuspenderLib
             this.Size = this.MinimumSize = this.MaximumSize = new Size(1050, 650);
             playWordSoundOnClick = false;
 
+            display_Label.Font = BasicRddleForm.checkFontSizeForStringControl(riddleWord.getUnicodeWord(), display_Label);
             display_Label.Text = riddleWord.getUnicodeWord();
         }
 
@@ -350,6 +351,7 @@ namespace SuspenderLib
 
         private void fuckupTimer_Tick(object sender, EventArgs e)
         {
+            fuckupTimer.Stop();
             this.BackColor = origBack;
             foreach (WordStruct ws in answersStructs)
             {

@@ -42,6 +42,7 @@ namespace SuspenderLib
             capLetterToHebrewUnicode['<'] = "\u05EA";
             capLetterToHebrewUnicode['>'] = "\u05E5";
 
+            capLetterToHebrewUnicode[' '] = "\u0020";
             //capLetters = capLetterToHebrewUnicode.Keys.ToArray();
         }
     }

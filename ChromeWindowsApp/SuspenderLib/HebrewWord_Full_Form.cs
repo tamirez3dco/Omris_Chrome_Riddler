@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,9 @@ namespace SuspenderLib
         {
             base.do_whatever_on_show();
             display_richTextBox.Text = String.Empty;
+
+            answer_richTextBox.Font = BasicRddleForm.checkFontSizeForStringControl(riddleWord.getUnicodeWord(),answer_richTextBox);
+
         }
 
 

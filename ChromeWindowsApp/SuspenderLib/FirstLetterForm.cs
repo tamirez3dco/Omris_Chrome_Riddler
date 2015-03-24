@@ -25,6 +25,9 @@ namespace SuspenderLib
                 // disable resizing
                 this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
+                display_richTextBox.Font = BasicRddleForm.checkFontSizeForStringControl(riddleWord.getUnicodeWord(), display_richTextBox);
+                answer_richTextBox.Font = BasicRddleForm.checkFontSizeForStringControl(riddleWord.getUnicodeWord(), answer_richTextBox);
+
 
                 // for allignsment to center
                 answer_richTextBox.SelectAll();
