@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -129,6 +130,8 @@ namespace SuspenderLib
             }
             catch (Exception exc)
             {
+                Logger.Log(exc.Message);
+                Logger.Log(exc.StackTrace);
             }
         }
         public void BasicRiddleForm_Load(object sender, EventArgs e)

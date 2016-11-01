@@ -77,7 +77,9 @@ namespace SuspenderLib
                     }
                     catch (Exception e2)
                     {
-                        MessageBox.Show("Could not load image");
+                        Logger.Log(e2.Message);
+                        Logger.Log(e2.StackTrace);
+
                     }
                 }
             }
@@ -103,12 +105,15 @@ namespace SuspenderLib
                     catch (Exception e2)
                     {
                         MessageBox.Show("Could not load sound file");
+                        Logger.Log(e2.Message);
+                        Logger.Log(e2.StackTrace);
+
                     }
                 }
                 newSoundFilePath = dlg.FileName;
                 updateWaveViewerByFile(newSoundFilePath);
                 return;
-
+/*
                 wave = new NAudio.Wave.WaveFileReader(newSoundFilePath);
                 Debug.WriteLine("wave.Length=" + wave.Length);
                 Debug.WriteLine("wave.TotalTime=" + wave.TotalTime);
@@ -117,6 +122,7 @@ namespace SuspenderLib
                 int desiredSamplesPerPixel = smaples / waveViewer1.Width;
                 waveViewer1.SamplesPerPixel = desiredSamplesPerPixel;
                 //waveViewer1.
+*/
             }
 
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -40,6 +41,7 @@
             this.programToHaltTextBox = new System.Windows.Forms.TextBox();
             this.ProgramToHaltLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.numMesichimComboBox = new System.Windows.Forms.ComboBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
@@ -59,7 +61,6 @@
             this.activateTimer = new System.Windows.Forms.Timer(this.components);
             this.label3VisibiltyTimer = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delayChooserTrackBar)).BeginInit();
@@ -203,6 +204,15 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ChooseRiddles";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(349, 226);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Num of optional answers";
             // 
             // numMesichimComboBox
             // 
@@ -405,15 +415,6 @@
             this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
             this.dataGridViewButtonColumn1.Width = 70;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(349, 226);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(123, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Num of optional answers";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,6 +422,7 @@
             this.ClientSize = new System.Drawing.Size(484, 452);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.activationStatusLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(500, 1000);
             this.MinimumSize = new System.Drawing.Size(500, 490);
             this.Name = "Form1";

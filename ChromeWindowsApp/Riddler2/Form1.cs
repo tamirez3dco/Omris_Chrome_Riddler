@@ -173,7 +173,12 @@ namespace HAMENAJES
 
             if (chosenType == 0) // a "single letter" hebrew riddle
             {
-                HebrewLetter chosenLetter = HebrewLetter.hebrewLetters[randomer.Next(0, HebrewLetter.hebrewLetters.Count())];
+                HebrewLetter chosenLetter;
+                do
+                {
+                    chosenLetter = HebrewLetter.hebrewLetters[randomer.Next(0, HebrewLetter.hebrewLetters.Count())];
+                } while (chosenLetter.english_char == " ");
+
                 if (DEBUGME) chosenLetter = HebrewLetter.hebrewLetters[debug_word_index];
                 chosenWord = make_word_out_of_letter(chosenLetter);
             }
@@ -251,10 +256,13 @@ namespace HAMENAJES
 
                 rf.FormClosed += rf_FormClosed;
                 rf.Show();
+                rf.Activate();
 
                 activationStatusLabel.Text = "Active - Riddle is Showing !!!";
                 activationStatusLabel.ForeColor = Color.Blue;
-            
+
+                rf.Activate();
+
             }
         }
 
@@ -356,6 +364,8 @@ namespace HAMENAJES
                     }
                     catch (Exception e)
                     {
+                        Logger.Log(e.Message);
+                        Logger.Log(e.StackTrace);
 
                     }
                 }

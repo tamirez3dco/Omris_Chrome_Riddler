@@ -35,7 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NAudio">
-      <HintPath>..\..\..\Ndaudio\NAudio.dll</HintPath>
+      <HintPath>..\packages\NAudio\lib\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WindowsMediaFormat">
+      <HintPath>..\packages\NAudio\lib\NAudio.WindowsMediaFormat.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>.\Newtonsoft.Json.dll</HintPath>

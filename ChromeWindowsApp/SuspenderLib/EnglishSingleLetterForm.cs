@@ -25,7 +25,7 @@ namespace SuspenderLib
             display_richTextBox.Text = riddleWord.english_chars;
         }
 
-        private NAudio.Wave.DirectSoundOut output = null;
+        //private NAudio.Wave.DirectSoundOut output = null;
 
         public override bool check_keystroke(KeyEventArgs e)
         {

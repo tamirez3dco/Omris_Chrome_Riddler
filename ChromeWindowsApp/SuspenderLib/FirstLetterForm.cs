@@ -47,6 +47,8 @@ namespace SuspenderLib
             }
             catch (Exception exc)
             {
+                Logger.Log(exc.Message);
+                Logger.Log(exc.StackTrace);
             }
         }
 
