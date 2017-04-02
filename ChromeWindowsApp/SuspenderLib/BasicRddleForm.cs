@@ -15,11 +15,8 @@ using System.Windows.Forms;
 namespace SuspenderLib
 {
     
-    public partial class BasicRddleForm : Form
+    public partial class BasicRddleForm : AbstractRiddleForm
     {
-        public SoundPlayer buzzer_player;
-        public SoundPlayer gling_player;
-        public SoundPlayer kolkavod_player;
 
         public HebrewWord riddleWord;
         public SoundPlayer word_player;
@@ -30,7 +27,6 @@ namespace SuspenderLib
         public bool play_havaras_when_shown = false;
         public List<System.Media.SoundPlayer> havara_players;
         int havara_counter = 0;
-        public bool riddleAboutToClose = false;
         public bool playWordSoundOnClick = true;
 
         public HorizontalAlignment desired_alignment = HorizontalAlignment.Center;
@@ -63,7 +59,7 @@ namespace SuspenderLib
             soundStopperTimer.Start();
         }
 
-        public virtual void load_riddle_sounds_into_dict()
+        public override void load_riddle_sounds_into_dict()
         {
             String temp = "words_sounds";
             if (this.GetType() == typeof(BasicRddleForm) || this.GetType() == typeof(EnglishSingleLetterForm)) temp = "letters_sounds";
@@ -84,7 +80,7 @@ namespace SuspenderLib
             return;
         }
 
-        public virtual void init_form_by_riddle_word(HebrewWord riddleWord)
+        public override void init_form_by_riddle_word(HebrewWord riddleWord)
         {
             this.riddleWord = riddleWord;
         }
@@ -205,13 +201,6 @@ namespace SuspenderLib
         }
 
 
-        public void play_kolkavod_and_set_close_timers()
-        {
-            riddleAboutToClose = true;
-
-            kolkavod_player.Play();
-            kol_kavod_Timer.Start();
-        }
 
         public virtual void letterStoppedTimer_Tick(object sender, EventArgs e)
         {
@@ -241,10 +230,6 @@ namespace SuspenderLib
             answer_richTextBox.Text = riddleWord.getUnicodeWord().Substring(0,letters_counter);
         }
 
-        private void kol_kavod_Timer_Tick(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void answer_richTextBox_Click(object sender, EventArgs e)
         {

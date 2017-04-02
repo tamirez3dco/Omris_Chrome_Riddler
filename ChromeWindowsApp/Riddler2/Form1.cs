@@ -23,7 +23,7 @@ namespace HAMENAJES
         public SoundPlayer kolkavod_player;
         private Random randomer = new Random();
 
-        BasicRddleForm rf = null;
+        AbstractRiddleForm rf = null;
         public static bool isRiddlerActive = false;
         public static bool DEBUGME = false;
         int debug_word_index = 0;
@@ -54,6 +54,11 @@ namespace HAMENAJES
                     sw.WriteLine("False");
                     sw.WriteLine("False");
                     sw.WriteLine("4");
+                    sw.WriteLine("True");
+                    sw.WriteLine("True");
+                    sw.WriteLine("True");
+                    sw.WriteLine("True");
+                    sw.WriteLine("True");
                 }
             }
 
@@ -72,11 +77,11 @@ namespace HAMENAJES
                 s = sr.ReadLine();
 
                 numMesichimComboBox.SelectedItem = s;
-/*                
-                s = sr.ReadLine();
-                int i = int.Parse(s);
-                numMesichimComboBox.SelectedItem = s;
-*/
+                checkBox7.Checked = bool.Parse(sr.ReadLine());
+                addCheckBox.Checked = bool.Parse(sr.ReadLine());
+                subCheckBox.Checked = bool.Parse(sr.ReadLine());
+                multCheckBox.Checked = bool.Parse(sr.ReadLine());
+                divCheckBox.Checked = bool.Parse(sr.ReadLine());
                 delayScrollBarLabel.Text = "Time between riddles : " + delayChooserTrackBar.Value.ToString() + " seconds.";
             }
 
@@ -97,6 +102,11 @@ namespace HAMENAJES
                 sw.WriteLine(checkBox5.Checked);
                 sw.WriteLine(checkBox6.Checked);
                 sw.WriteLine(numMesichimComboBox.SelectedItem.ToString());
+                sw.WriteLine(checkBox7.Checked);
+                sw.WriteLine(addCheckBox.Checked);
+                sw.WriteLine(subCheckBox.Checked);
+                sw.WriteLine(multCheckBox.Checked);
+                sw.WriteLine(divCheckBox.Checked);
             }
 
             Processer.SuspendProcess(programToHaltTextBox.Text, true);
@@ -164,6 +174,7 @@ namespace HAMENAJES
             if (checkBox4.Checked) allowed_types.Add(4);
             if (checkBox5.Checked) allowed_types.Add(5);
             if (checkBox6.Checked) allowed_types.Add(6);
+            if (checkBox7.Checked) allowed_types.Add(7);
 
             RiddleType chosenType = allowed_types[randomer.Next(0, allowed_types.Count())];
             if (DEBUGME)
@@ -171,62 +182,77 @@ namespace HAMENAJES
                 chosenType = allowed_types[0];
             }
 
-            if (chosenType == 0) // a "single letter" hebrew riddle
+            if (chosenType == 7) // basic math
             {
-                HebrewLetter chosenLetter;
-                do
-                {
-                    chosenLetter = HebrewLetter.hebrewLetters[randomer.Next(0, HebrewLetter.hebrewLetters.Count())];
-                } while (chosenLetter.english_char == " ");
-
-                if (DEBUGME) chosenLetter = HebrewLetter.hebrewLetters[debug_word_index];
-                chosenWord = make_word_out_of_letter(chosenLetter);
-            }
-            else if (chosenType == 4) // a "single letter" hebrew riddle
-            {
-                // choose an english letter by random
-                int num = randomer.Next(0, 26); // Zero to 25
-                char letter = (char)('a' + num);
-                chosenWord = new HebrewWord(letter.ToString().ToUpper() , letter.ToString(), null,4);
-
+                List<BasicMathForm.OPERATION> allowedOps = new List<BasicMathForm.OPERATION>();
+                if (addCheckBox.Checked) allowedOps.Add(BasicMathForm.OPERATION.Add);
+                if (subCheckBox.Checked) allowedOps.Add(BasicMathForm.OPERATION.SUB);
+                if (multCheckBox.Checked) allowedOps.Add(BasicMathForm.OPERATION.MULT);
+                if (divCheckBox.Checked) allowedOps.Add(BasicMathForm.OPERATION.DIV);
+                rf = new BasicMathForm(allowedOps);
             }
             else
             {
-                List<HebrewWord> chosenList = HebrewWord.wordsInGame[chosenType];
-                chosenWord = chosenList[randomer.Next(0, chosenList.Count())];
-                if (DEBUGME)  chosenWord = chosenList[debug_word_index];
+                if (chosenType == 0) // a "single letter" hebrew riddle
+                {
+                    HebrewLetter chosenLetter;
+                    do
+                    {
+                        chosenLetter = HebrewLetter.hebrewLetters[randomer.Next(0, HebrewLetter.hebrewLetters.Count())];
+                    } while (chosenLetter.english_char == " ");
+
+                    if (DEBUGME) chosenLetter = HebrewLetter.hebrewLetters[debug_word_index];
+                    chosenWord = make_word_out_of_letter(chosenLetter);
+                }
+                else if (chosenType == 4) // a "single letter" hebrew riddle
+                {
+                    // choose an english letter by random
+                    int num = randomer.Next(0, 26); // Zero to 25
+                    char letter = (char)('a' + num);
+                    chosenWord = new HebrewWord(letter.ToString().ToUpper(), letter.ToString(), null, 4);
+
+                }
+                else
+                {
+                    List<HebrewWord> chosenList = HebrewWord.wordsInGame[chosenType];
+                    chosenWord = chosenList[randomer.Next(0, chosenList.Count())];
+                    if (DEBUGME) chosenWord = chosenList[debug_word_index];
+                }
+
+                switch (chosenWord.riddle_type)
+                {
+                    case 0:
+                        rf = new BasicRddleForm();
+                        break;
+                    case 1:
+                        rf = new HebrewWordForm();
+                        break;
+                    case 2:
+                        rf = new FirstLetterForm();
+                        break;
+                    case 3:
+                        rf = new LastLetterForm();
+                        break;
+                    case 4:
+                        rf = new EnglishSingleLetterForm();
+                        break;
+                    case 5:
+                        rf = new HebrewWord_Full_Form();
+                        break;
+                    case 6:
+                        rf = new ImageToWordForm();
+                        ImageToWordForm rrf = (ImageToWordForm)rf;
+                        rrf.num_of_answers = int.Parse((String)numMesichimComboBox.SelectedItem);
+                        break;
+                }
+                rf.init_form_by_riddle_word(chosenWord);
             }
 
-            switch (chosenWord.riddle_type)
-            {
-                case 0:
-                    rf = new BasicRddleForm();
-                    break;
-                case 1:
-                    rf = new HebrewWordForm();
-                    break;
-                case 2:
-                    rf = new FirstLetterForm();
-                    break;
-                case 3:
-                    rf = new LastLetterForm();
-                    break;
-                case 4:
-                    rf = new EnglishSingleLetterForm();
-                    break;
-                case 5:
-                    rf = new HebrewWord_Full_Form();
-                    break;
-                case 6:
-                    rf = new ImageToWordForm();
-                    ImageToWordForm rrf = (ImageToWordForm)rf;
-                    rrf.num_of_answers = int.Parse((String)numMesichimComboBox.SelectedItem);
-                    break;
-            }
+
             rf.buzzer_player = buzzer_player;
             rf.gling_player = gling_player;
             rf.kolkavod_player = kolkavod_player;
-            rf.init_form_by_riddle_word(chosenWord);
+            
             rf.load_riddle_sounds_into_dict();
 
         }
@@ -388,49 +414,22 @@ namespace HAMENAJES
             wordsDataGridView.AllowUserToResizeRows = false;
         }
 
-        private void checkBox0_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox chk = checkBox0;
+            CheckBox chk = (CheckBox)sender;
             if (chk.Checked) label3.Visible = false;
             else if (!check_if_one_riddle_is_checked())
             {
                 label3VisibiltyTimer.Start();
                 chk.Checked = true;
             }
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox chk = checkBox1;
-            if (chk.Checked) label3.Visible = false;
-            else if (!check_if_one_riddle_is_checked())
+            if (checkBox7.Checked)
             {
-                label3VisibiltyTimer.Start();
-                chk.Checked = true;
+                groupBox1.Visible = true;
             }
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox chk = checkBox2;
-            if (chk.Checked) label3.Visible = false;
-            else if (!check_if_one_riddle_is_checked())
+            else
             {
-                label3VisibiltyTimer.Start();
-                chk.Checked = true;
-            }
-
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox chk = checkBox3;
-            if (chk.Checked) label3.Visible = false;
-            else if (!check_if_one_riddle_is_checked())
-            {
-                label3VisibiltyTimer.Start();
-                chk.Checked = true;
+                groupBox1.Visible = false;
             }
 
         }
@@ -444,6 +443,16 @@ namespace HAMENAJES
             if (checkBox4.Checked) return true;
             if (checkBox5.Checked) return true;
             if (checkBox6.Checked) return true;
+            if (checkBox7.Checked) return true;
+            return false;
+        }
+
+        private bool check_if_math_op_is_checked()
+        {
+            if (addCheckBox.Checked) return true;
+            if (subCheckBox.Checked) return true;
+            if (multCheckBox.Checked) return true;
+            if (divCheckBox.Checked) return true;
             return false;
         }
 
@@ -451,6 +460,7 @@ namespace HAMENAJES
         {
             label3VisibiltyTimer.Stop();
             label3.Visible = true;
+            mathOpsMissingLabel.Visible = false;
         }
 
         private void wordsDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -466,43 +476,22 @@ namespace HAMENAJES
             upform.ShowDialog();
         }
 
-        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        private void opCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBox chk = checkBox4;
-            if (chk.Checked) label3.Visible = false;
-            else if (!check_if_one_riddle_is_checked())
+            CheckBox chk = (CheckBox)sender;
+            if (chk.Checked) mathOpsMissingLabel.Visible = false;
+            else if (!check_if_math_op_is_checked())
             {
-                label3VisibiltyTimer.Start();
+                oppsMissingLabelTimer.Start();
                 chk.Checked = true;
             }
-
         }
 
-        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        private void oppsMissingLabelTimer_Tick(object sender, EventArgs e)
         {
-            CheckBox chk = checkBox5;
-            if (chk.Checked) label3.Visible = false;
-            else if (!check_if_one_riddle_is_checked())
-            {
-                label3VisibiltyTimer.Start();
-                chk.Checked = true;
-            }
-
+            oppsMissingLabelTimer.Stop();
+            mathOpsMissingLabel.Visible = true;
         }
-
-        private void checkBox6_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox chk = checkBox6;
-            if (chk.Checked) label3.Visible = false;
-            else if (!check_if_one_riddle_is_checked())
-            {
-                label3VisibiltyTimer.Start();
-                chk.Checked = true;
-            }
-
-        }
-
-
     }
 
 

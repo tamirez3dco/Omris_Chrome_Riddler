@@ -41,6 +41,13 @@
             this.programToHaltTextBox = new System.Windows.Forms.TextBox();
             this.ProgramToHaltLabel = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.mathOpsMissingLabel = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.divCheckBox = new System.Windows.Forms.CheckBox();
+            this.multCheckBox = new System.Windows.Forms.CheckBox();
+            this.subCheckBox = new System.Windows.Forms.CheckBox();
+            this.addCheckBox = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.numMesichimComboBox = new System.Windows.Forms.ComboBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -61,10 +68,12 @@
             this.activateTimer = new System.Windows.Forms.Timer(this.components);
             this.label3VisibiltyTimer = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.oppsMissingLabelTimer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delayChooserTrackBar)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wordsDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -78,6 +87,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 40, 3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.ShowToolTips = true;
             this.tabControl1.Size = new System.Drawing.Size(484, 418);
             this.tabControl1.TabIndex = 0;
             // 
@@ -98,6 +108,7 @@
             this.tabPage1.Size = new System.Drawing.Size(476, 392);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Activate";
+            this.tabPage1.ToolTipText = "הפעלת החידות";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // comboBox1
@@ -187,6 +198,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.mathOpsMissingLabel);
+            this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.checkBox7);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.numMesichimComboBox);
             this.tabPage2.Controls.Add(this.checkBox6);
@@ -203,7 +217,97 @@
             this.tabPage2.Size = new System.Drawing.Size(476, 392);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ChooseRiddles";
+            this.tabPage2.ToolTipText = "בחירת סוגי החידות";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // mathOpsMissingLabel
+            // 
+            this.mathOpsMissingLabel.AutoSize = true;
+            this.mathOpsMissingLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.mathOpsMissingLabel.ForeColor = System.Drawing.Color.Red;
+            this.mathOpsMissingLabel.Location = new System.Drawing.Point(37, 342);
+            this.mathOpsMissingLabel.Name = "mathOpsMissingLabel";
+            this.mathOpsMissingLabel.Size = new System.Drawing.Size(412, 20);
+            this.mathOpsMissingLabel.TabIndex = 12;
+            this.mathOpsMissingLabel.Text = "At least one operation must be checked for Basic Math !!!";
+            this.mathOpsMissingLabel.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.divCheckBox);
+            this.groupBox1.Controls.Add(this.multCheckBox);
+            this.groupBox1.Controls.Add(this.subCheckBox);
+            this.groupBox1.Controls.Add(this.addCheckBox);
+            this.groupBox1.Location = new System.Drawing.Point(210, 295);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(193, 33);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "operations";
+            // 
+            // divCheckBox
+            // 
+            this.divCheckBox.AutoSize = true;
+            this.divCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.divCheckBox.Location = new System.Drawing.Point(144, 10);
+            this.divCheckBox.Name = "divCheckBox";
+            this.divCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.divCheckBox.Size = new System.Drawing.Size(36, 21);
+            this.divCheckBox.TabIndex = 14;
+            this.divCheckBox.Text = "÷";
+            this.divCheckBox.UseVisualStyleBackColor = true;
+            this.divCheckBox.CheckedChanged += new System.EventHandler(this.opCheckBox_CheckedChanged);
+            // 
+            // multCheckBox
+            // 
+            this.multCheckBox.AutoSize = true;
+            this.multCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.multCheckBox.Location = new System.Drawing.Point(97, 10);
+            this.multCheckBox.Name = "multCheckBox";
+            this.multCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.multCheckBox.Size = new System.Drawing.Size(34, 21);
+            this.multCheckBox.TabIndex = 13;
+            this.multCheckBox.Text = "x";
+            this.multCheckBox.UseVisualStyleBackColor = true;
+            this.multCheckBox.CheckedChanged += new System.EventHandler(this.opCheckBox_CheckedChanged);
+            // 
+            // subCheckBox
+            // 
+            this.subCheckBox.AutoSize = true;
+            this.subCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.subCheckBox.Location = new System.Drawing.Point(53, 10);
+            this.subCheckBox.Name = "subCheckBox";
+            this.subCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.subCheckBox.Size = new System.Drawing.Size(33, 21);
+            this.subCheckBox.TabIndex = 12;
+            this.subCheckBox.Text = "-";
+            this.subCheckBox.UseVisualStyleBackColor = true;
+            this.subCheckBox.CheckedChanged += new System.EventHandler(this.opCheckBox_CheckedChanged);
+            // 
+            // addCheckBox
+            // 
+            this.addCheckBox.AutoSize = true;
+            this.addCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.addCheckBox.Location = new System.Drawing.Point(6, 10);
+            this.addCheckBox.Name = "addCheckBox";
+            this.addCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.addCheckBox.Size = new System.Drawing.Size(36, 21);
+            this.addCheckBox.TabIndex = 0;
+            this.addCheckBox.Text = "+";
+            this.addCheckBox.UseVisualStyleBackColor = true;
+            this.addCheckBox.CheckedChanged += new System.EventHandler(this.opCheckBox_CheckedChanged);
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.checkBox7.Location = new System.Drawing.Point(60, 295);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(149, 33);
+            this.checkBox7.TabIndex = 10;
+            this.checkBox7.Text = "Basic Math";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // label4
             // 
@@ -238,7 +342,7 @@
             this.checkBox6.TabIndex = 7;
             this.checkBox6.Text = "Hebrew Read";
             this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // checkBox5
             // 
@@ -250,19 +354,19 @@
             this.checkBox5.TabIndex = 6;
             this.checkBox5.Text = "Hebrew FULL";
             this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.checkBox4.Location = new System.Drawing.Point(60, 270);
+            this.checkBox4.Location = new System.Drawing.Point(60, 256);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(254, 33);
             this.checkBox4.TabIndex = 5;
             this.checkBox4.Text = "English Single Letter";
             this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // label3
             // 
@@ -286,7 +390,7 @@
             this.checkBox3.TabIndex = 3;
             this.checkBox3.Text = "Hebrew Last Letter";
             this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -298,7 +402,7 @@
             this.checkBox2.TabIndex = 2;
             this.checkBox2.Text = "Hebrew First Letter";
             this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -310,7 +414,7 @@
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Hebrew Word Copy";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // checkBox0
             // 
@@ -322,17 +426,19 @@
             this.checkBox0.TabIndex = 0;
             this.checkBox0.Text = "Hebrew Single Letter";
             this.checkBox0.UseVisualStyleBackColor = true;
-            this.checkBox0.CheckedChanged += new System.EventHandler(this.checkBox0_CheckedChanged);
+            this.checkBox0.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.wordsDataGridView);
+            this.tabPage3.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(476, 392);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Riddles";
+            this.tabPage3.ToolTipText = "מאפשר הוספת ושינוי חידות - לא פעיל";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // wordsDataGridView
@@ -415,6 +521,11 @@
             this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
             this.dataGridViewButtonColumn1.Width = 70;
             // 
+            // oppsMissingLabelTimer
+            // 
+            this.oppsMissingLabelTimer.Interval = 250;
+            this.oppsMissingLabelTimer.Tick += new System.EventHandler(this.oppsMissingLabelTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,6 +547,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.delayChooserTrackBar)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.wordsDataGridView)).EndInit();
             this.ResumeLayout(false);
@@ -476,6 +589,14 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.ComboBox numMesichimComboBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox divCheckBox;
+        private System.Windows.Forms.CheckBox multCheckBox;
+        private System.Windows.Forms.CheckBox subCheckBox;
+        private System.Windows.Forms.CheckBox addCheckBox;
+        private System.Windows.Forms.Label mathOpsMissingLabel;
+        private System.Windows.Forms.Timer oppsMissingLabelTimer;
     }
 }
 

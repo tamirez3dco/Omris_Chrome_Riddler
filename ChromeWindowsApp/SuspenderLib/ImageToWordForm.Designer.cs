@@ -45,6 +45,8 @@
             // 
             // display_Label
             // 
+            fuckupTimer.Tick += fuckupTimer_Tick;
+
             this.display_Label.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.display_Label.Font = new System.Drawing.Font("Arial", 90F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.display_Label.Location = new System.Drawing.Point(284, 26);
@@ -54,11 +56,6 @@
             this.display_Label.TabIndex = 13;
             this.display_Label.Text = "label1";
             this.display_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // fuckupTimer
-            // 
-            this.fuckupTimer.Interval = 10000;
-            this.fuckupTimer.Tick += new System.EventHandler(this.fuckupTimer_Tick);
             // 
             // ImageToWordForm
             // 
@@ -82,6 +79,5 @@
         #endregion
 
         private System.Windows.Forms.Label display_Label;
-        private System.Windows.Forms.Timer fuckupTimer;
     }
 }

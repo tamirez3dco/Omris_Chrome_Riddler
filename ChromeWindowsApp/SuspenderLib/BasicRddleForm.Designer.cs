@@ -33,7 +33,6 @@
             this.delay_first_sound_timer = new System.Windows.Forms.Timer(this.components);
             this.answer_richTextBox = new System.Windows.Forms.RichTextBox();
             this.letterStoppedTimer = new System.Windows.Forms.Timer(this.components);
-            this.kol_kavod_Timer = new System.Windows.Forms.Timer(this.components);
             this.soundStopperTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -73,11 +72,6 @@
             // 
             this.letterStoppedTimer.Tick += new System.EventHandler(this.letterStoppedTimer_Tick);
             // 
-            // kol_kavod_Timer
-            // 
-            this.kol_kavod_Timer.Interval = 1500;
-            this.kol_kavod_Timer.Tick += new System.EventHandler(this.kol_kavod_Timer_Tick);
-            // 
             // soundStopperTimer
             // 
             this.soundStopperTimer.Tick += new System.EventHandler(this.soundStopperTimer_Tick);
@@ -86,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 474);
+            this.ClientSize = new System.Drawing.Size(554, 473);
             this.ControlBox = false;
             this.Controls.Add(this.answer_richTextBox);
             this.Controls.Add(this.display_richTextBox);
@@ -109,7 +103,6 @@
         #endregion
 
         public System.Windows.Forms.Timer delay_first_sound_timer;
-        private System.Windows.Forms.Timer kol_kavod_Timer;
         public System.Windows.Forms.RichTextBox display_richTextBox;
         public System.Windows.Forms.RichTextBox answer_richTextBox;
         public System.Windows.Forms.Timer letterStoppedTimer;
